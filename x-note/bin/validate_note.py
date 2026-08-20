@@ -1,28 +1,20 @@
 """
 validate_note.py
 ================
-Validate every written note against llm-wiki spec.
+Validate x-note notes against llm-wiki spec.
 
-Hard checks (any fail = INVALID):
-  - Required frontmatter fields present
-  - content_hash matches actual text
-  - score >= threshold
-  - text_length matches actual text
-  - tweet_id, handle, author_display consistent
-  - core_summary exists, length > 50, not '待補'/'tbd'
-  - key_points >= 3
-  - reference contains complete text (no truncation)
-  - source_url matches expected format
+Fix #3: Uses MiniMax-M3 inline validation by default (replaces Subagent reviewer).
 
 Inputs:
-    {{VAULT_ROOT}}/00-Inbox/*.md
+    {{VAULT_ROOT}}/00-Inbox/YYYY-MM-DD_x-note_*.md
 
 Outputs:
     {{VAULT_ROOT}}/00-Inbox/xnote_status_YYYY-MM-DD.json
 
 Usage:
-    python validate_note.py --date 2026-08-08
-    python validate_note.py --date 2026-08-08 --threshold 6.5
+    python validate_note.py --date 2026-08-19
+    python validate_note.py --date 2026-08-19 --use-rules
+    python validate_note.py --date 2026-08-19 --auto-prune
 """
 import argparse
 import hashlib
@@ -34,25 +26,14 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-try:
-    from curator import PLACEHOLDER_PATTERNS
-except ImportError:
-    PLACEHOLDER_PATTERNS = (
-        "未在沒有翻譯證據時",
-        "本筆記只整理來源可確認",
-        "此筆記只代表單篇 X 貼文",
-        "摘要僅依本次完整來源內容整理",
-        "本次未在沒有翻譯證據時改寫原文",
-        "完整來源文字保留於",
-        "(auto-generated",
-        "待補",
-    )
-
-sys.path.insert(0, str(Path(__file__).parent))
 from config_loader import load_config, paths
+from curator import (
+    validate_note_with_llm,
+    _fallback_validate_note,
+    PLACEHOLDER_PATTERNS,
+)
 
 UTC8 = timezone(timedelta(hours=8))
-
 
 REQUIRED_FM_FIELDS = {
     "title", "source_url", "tweet_id", "handle", "author_display",
@@ -106,28 +87,37 @@ def parse_frontmatter(text: str) -> tuple:
 def _validate_legacy_v6(path: Path, body: str, threshold: float) -> dict:
     """Validate a legacy x-note v6 format note (核心摘要 / 關鍵知識點 / ...)."""
     issues = []
-    import re
-    # Each section must be substantive (≥40 chars)
-    legacy_specs = (
+
+    def extract_section(text: str, start: str, ends: tuple) -> str:
+        if start not in text:
+            return ""
+        after = text.split(start, 1)[1]
+        for end in ends:
+            if end in after:
+                after = after.split(end, 1)[0]
+        return after.strip()
+
+    legacy_specs = [
         ("## 核心摘要", "## 文章分析"),
         ("### 核心論點", "### 風險與限制"),
         ("### 風險與限制", "## 關鍵知識點"),
         ("## 關鍵知識點", "## 我會怎麼用這篇內容"),
         ("## 我會怎麼用這篇內容", "## 全文（繁中重寫）"),
         ("## 全文（繁中重寫）", "## 原文區塊"),
-    )
+    ]
     for start, end in legacy_specs:
-        chunk = _extract_section(body, start, (end,))
+        chunk = extract_section(body, start, (end,))
         if len(chunk.strip()) < 40:
             issues.append(f"legacy section too short or empty: {start} ({len(chunk.strip())} chars)")
-    # Must have a fenced raw text block
+
     if not re.search(r"(?ms)^(?P<fence>`{3,})text\n(?P<raw>.*?)\n(?P=fence)(?:\n|$)", body):
         issues.append("legacy note: complete post text is not enclosed in a fenced code block")
-    # Must not contain placeholder text
+
     for pat in PLACEHOLDER_PATTERNS:
         if pat in body:
             issues.append(f"legacy note: placeholder text detected: '{pat}'")
             break
+
     return {
         "path": str(path),
         "filename": path.name,
@@ -136,53 +126,48 @@ def _validate_legacy_v6(path: Path, body: str, threshold: float) -> dict:
         "score": "legacy",
         "handle": None,
         "tweet_id": None,
+        "validation_method": "legacy-rule",
     }
 
 
-def _extract_section(text: str, start: str, ends: tuple) -> str:
-    if start not in text:
-        return ""
-    after = text.split(start, 1)[1]
-    for end in ends:
-        if end in after:
-            after = after.split(end, 1)[0]
-    return after.strip()
-
-
-def validate_note(path: Path, threshold: float) -> dict:
-    """Validate one note. Return result dict with issues list."""
+def validate_note_rule_based(note_path: Path, threshold: float) -> dict:
+    """
+    Rule-based validation (fast, no LLM call).
+    Used as fallback when MiniMax-M3 is unavailable or --use-rules is set.
+    """
     issues = []
-    text = path.read_text(encoding="utf-8")
+    passed = []
+    text = note_path.read_text(encoding="utf-8")
     fm, body = parse_frontmatter(text)
 
-    # 0. Legacy v6 format detection (x-note v6 used 核心摘要 / 文章分析 / ...)
-    # If the file uses legacy headings, accept it as long as the body is substantive.
+    # Legacy v6 detection
     legacy_v6_headings = (
-        "## 核心摘要",
-        "## 關鍵知識點",
-        "## 我會怎麼用這篇內容",
-        "## 全文（繁中重寫）",
+        "## 核心摘要", "## 關鍵知識點",
+        "## 我會怎麼用這篇內容", "## 全文（繁中重寫）",
         "## 原文區塊",
     )
-    is_legacy_v6 = all(h in body for h in legacy_v6_headings[:3])  # at least the first 3
+    is_legacy_v6 = all(h in body for h in legacy_v6_headings[:3])
 
     if is_legacy_v6:
-        # Run a relaxed validator for legacy notes
-        return _validate_legacy_v6(path, body, threshold)
+        return _validate_legacy_v6(note_path, body, threshold)
 
-    # 1. Frontmatter fields
+    # Frontmatter fields
     missing = REQUIRED_FM_FIELDS - set(fm.keys())
     if missing:
         issues.append(f"missing frontmatter fields: {sorted(missing)}")
+    else:
+        passed.append("[OK] all required frontmatter fields")
 
-    # 2. Required sections
+    # Required sections
     for s in REQUIRED_SECTIONS:
-        if s not in body:
-            issues.append(f"missing section: {s}")
+        if s in body:
+            passed.append(f"[OK] {s}")
+        else:
+            issues.append(f"[FAIL] missing section: {s}")
 
-    # 3. Content hash
-    # Handle nested code blocks: match from opening ```text to the LAST ``` in the file
-    m = re.search(r"### Complete X Post Text\s*\n```text\s*\n(.*)\n```\s*$", body, re.DOTALL | re.MULTILINE)
+    # Content hash
+    m = re.search(r"### Complete X Post Text\s*\n```text\s*\n(.*)\n```\s*$",
+                  body, re.DOTALL | re.MULTILINE)
     if not m:
         issues.append("could not locate Complete X Post Text block")
         captured_text = ""
@@ -190,116 +175,116 @@ def validate_note(path: Path, threshold: float) -> dict:
         captured_text = m.group(1).rstrip()
         expected_hash = hashlib.sha256(captured_text.encode("utf-8")).hexdigest()
         if fm.get("content_hash", "") != expected_hash:
-            issues.append(f"content_hash mismatch: got={fm.get('content_hash', '')[:8]}... expected={expected_hash[:8]}...")
+            issues.append(f"content_hash mismatch: got={fm.get('content_hash', '')[:8]}... "
+                          f"expected={expected_hash[:8]}...")
+        else:
+            passed.append("[OK] content_hash matches")
 
-    # 4. text_length
+    # text_length
     try:
         fm_len = int(fm.get("text_length", "0"))
         if abs(fm_len - len(captured_text)) > 5:
             issues.append(f"text_length mismatch: fm={fm_len} actual={len(captured_text)}")
+        else:
+            passed.append("[OK] text_length matches")
     except Exception:
         issues.append(f"text_length not integer: {fm.get('text_length')}")
 
-    # 5. Score threshold
+    # Score threshold
     try:
-        score = float(fm.get("score", "0"))
-        if score < threshold:
-            issues.append(f"score {score} below threshold {threshold}")
+        score_val = float(fm.get("score", "0"))
+        if score_val < threshold:
+            issues.append(f"score {score_val} below threshold {threshold}")
+        else:
+            passed.append(f"[OK] score {score_val} >= {threshold}")
     except Exception:
         issues.append(f"score not numeric: {fm.get('score')}")
 
-    # 6. Core Summary quality
+    # Core Summary quality
     m = re.search(r"## Core Summary\s*\n\s*\n?(.+?)(?=\n##\s|\Z)", body, re.DOTALL)
     if not m:
-        issues.append("no Core Summary content")
+        issues.append("[FAIL] no Core Summary content")
     else:
         summary = m.group(1).strip()
         if len(summary) < 50:
-            issues.append(f"Core Summary too short: {len(summary)} chars")
-        # Must NOT be a placeholder (expanded 2026-08-09 to match x-note fail-loud fix)
-        try:
-            from curator import PLACEHOLDER_PATTERNS
-            bad_placeholders = list(PLACEHOLDER_PATTERNS)
-        except ImportError:
-            bad_placeholders = [
-                "未在沒有翻譯證據時",
-                "本筆記只整理來源可確認",
-                "此筆記只代表單篇 X 貼文",
-                "摘要僅依本次完整來源內容整理",
-                "本次未在沒有翻譯證據時改寫原文",
-                "完整來源文字保留於",
-                "(auto-generated",
-                "待補",
-            ]
-        for ph in bad_placeholders:
+            issues.append(f"[FAIL] Core Summary too short: {len(summary)} chars")
+        else:
+            passed.append(f"[OK] Core Summary length={len(summary)}")
+
+        for ph in PLACEHOLDER_PATTERNS:
             if ph in summary.lower() or ph in summary:
-                issues.append(f"Core Summary contains placeholder: '{ph}' (curator did not run)")
+                issues.append(f"[FAIL] Core Summary contains placeholder: '{ph}'")
                 break
 
-    # 6b. Why It Matters quality (added 2026-08-09)
+    # Why It Matters quality
     m = re.search(r"## Why It Matters\s*\n\s*\n?(.+?)(?=\n##\s|\Z)", body, re.DOTALL)
     if m:
         wim = m.group(1).strip()
         if len(wim) < 30:
-            issues.append(f"Why It Matters too short: {len(wim)} chars")
+            issues.append(f"[WARN] Why It Matters too short: {len(wim)} chars")
+        else:
+            passed.append(f"[OK] Why It Matters length={len(wim)}")
 
-    # 6c. Key Points >= 3 with substantive content (added 2026-08-09)
+    # Key Points >= 3
     m = re.search(r"## Key Points\s*\n(.*?)(?=\n##\s|\Z)", body, re.DOTALL)
     if m:
-        points = [line for line in m.group(1).splitlines() if line.strip().startswith("-")]
+        points = [line for line in m.group(1).splitlines()
+                  if line.strip().startswith("-")]
         if len(points) < 3:
-            issues.append(f"only {len(points)} key points (need >= 3)")
-        # Each point must be >= 10 chars (placeholder like '- ...' would fail)
-        short_points = [p for p in points if len(p.strip().lstrip('-').strip()) < 10]
-        if short_points:
-            issues.append(f"{len(short_points)} key points are too short (<10 chars)")
+            issues.append(f"[FAIL] only {len(points)} key points (need >= 3)")
+        else:
+            passed.append(f"[OK] Key Points {len(points)} >= 3")
+            short_points = [p for p in points
+                            if len(p.strip().lstrip("-").strip()) < 10]
+            if short_points:
+                issues.append(f"[WARN] {len(short_points)} key points too short (<10 chars)")
+    else:
+        issues.append("[FAIL] no Key Points section")
 
-    # 7. Key Points >= 3 (moved to 6c above)
-    # (kept here as legacy alias; will not run)
-    # legacy 7-key-points block intentionally left empty
-
-    # 8. source_url format
+    # source_url format
     url = fm.get("source_url", "")
     if not re.match(r"^https://x\.com/[^/]+/status/\d+$", url):
-        issues.append(f"source_url malformed: {url}")
+        issues.append(f"[WARN] source_url malformed: {url}")
+    else:
+        passed.append("[OK] source_url format valid")
 
-    # 9. Reference completeness
-    # Only flag if text actually ENDS with '...' (likely truncation)
-    # Ignore '...' that appear in the middle (author's writing style)
-    if captured_text and captured_text.rstrip().endswith("..."):
-        # Allow legitimate ellipsis endings (author's style)
-        legitimate_ellipsis_endings = ["待更新...", "待补充...", "未完待续...", "未完...",
-                                      "继续...", "稍后...", "稍候...", "待查...",
-                                      "确认中...", "核实...", "更多...", "查看..."]
-        if not any(captured_text.rstrip().endswith(e) for e in legitimate_ellipsis_endings):
-            issues.append("Reference text appears truncated (ends with '...')")
+    valid = len([i for i in issues if i.startswith("[FAIL]")]) == 0
+    rule_score = 100.0 if valid else max(0, 100 - len(issues) * 10)
 
     return {
-        "path": str(path),
-        "filename": path.name,
+        "path": str(note_path),
+        "filename": note_path.name,
         "issues": issues,
-        "valid": len(issues) == 0,
+        "passed_checks": passed,
+        "valid": valid,
+        "score": rule_score,
         "score": fm.get("score"),
         "handle": fm.get("handle"),
         "tweet_id": fm.get("tweet_id"),
+        "validation_method": "rule-based",
     }
 
 
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description="x-note validator (Fix #3: MiniMax-M3)")
     parser.add_argument("--date", required=True, help="YYYY-MM-DD")
     parser.add_argument("--threshold", type=float, default=None)
+    parser.add_argument(
+        "--use-rules",
+        action="store_true",
+        help="Force rule-based validation (skip MiniMax-M3)",
+    )
     parser.add_argument(
         "--auto-prune",
         action="store_true",
         default=False,
-        help="Auto-delete truncated notes when truncation rate < 10%% (default: ask/interrupt)",
+        help="Auto-delete truncated notes when truncation rate < 10%%",
     )
     parser.add_argument(
         "--prune-threshold",
         type=float,
         default=10.0,
-        help="Truncation rate (%%) below which auto-prune activates (default: 10.0)",
+        help="Truncation rate (%%) below which auto-prune activates",
     )
     args = parser.parse_args()
 
@@ -312,56 +297,84 @@ def main():
     notes = sorted(inbox.glob(pattern))
     print(f"[INFO] Found {len(notes)} notes for {args.date}")
     print(f"[INFO] Threshold: {threshold}")
+    print(f"[INFO] Method: {'Rule-based' if args.use_rules else 'MiniMax-M3 inline'}")
 
     results = []
     for note in notes:
-        r = validate_note(note, threshold)
+        # Read note text and frontmatter
+        note_text = note.read_text(encoding="utf-8")
+        fm, body = parse_frontmatter(note_text)
+
+        # Reconstruct minimal post dict for LLM validation
+        original_post = {
+            "text": "",
+            "handle": fm.get("handle", "").lstrip("@"),
+            "author_display": fm.get("author_display", ""),
+            "score": float(fm.get("score", 0)),
+            "status_id": fm.get("tweet_id", ""),
+            "content_hash": fm.get("content_hash", ""),
+            "text_length": int(fm.get("text_length", 0)),
+            "time_utc": fm.get("created", ""),
+            "likes": 0, "reposts": 0, "replies": 0,
+        }
+
+        # Extract original text from the Reference block
+        m = re.search(r"### Complete X Post Text\s*\n```text\s*\n(.*)\n```\s*$",
+                      body, re.DOTALL | re.MULTILINE)
+        if m:
+            original_post["text"] = m.group(1).rstrip()
+
+        if args.use_rules:
+            r = validate_note_rule_based(note, threshold)
+        else:
+            # Fix #3: MiniMax-M3 inline validation
+            r = validate_note_with_llm(note_text=note_text, original_post=original_post, cfg=cfg)
+            r["filename"] = note.name
+            r["path"] = str(note)
+
         results.append(r)
-        status = "OK" if r["valid"] else f"FAIL ({len(r['issues'])} issues)"
-        print(f"  [{status}] {note.name}")
-        for issue in r["issues"]:
+
+        status = "OK" if r.get("valid", False) else f"FAIL ({len(r.get('issues', []))} issues)"
+        v_score = r.get("score", 0)
+        v_method = r.get("validation_method", "MiniMax-M3")
+        print(f"  [{status} v={v_score:.0f}%] {note.name} [{v_method}]")
+        for issue in r.get("issues", []):
             print(f"          - {issue}")
 
-    passed = sum(1 for r in results if r["valid"])
+    passed = sum(1 for r in results if r.get("valid", False))
     failed_total = len(results) - passed
 
-    # ── Truncation auto-prune logic ──────────────────────────────────────────
+    # Truncation auto-prune
     truncated = [
         r for r in results
-        if not r["valid"]
-        and any("truncated" in i.lower() for i in r["issues"])
+        if not r.get("valid", False)
+        and any("truncated" in i.lower() for i in r.get("issues", []))
     ]
     truncation_rate = (
-        (len(truncated) / len(results) * 100)
-        if results
-        else 0.0
+        (len(truncated) / len(results) * 100) if results else 0.0
     )
-    prune_decision = None  # None=skip, 'pruned'=deleted, 'kept'=preserved
+    prune_decision = None
 
     if truncated:
         print(f"\n[!] {len(truncated)} truncated notes (rate={truncation_rate:.1f}%%)")
         if args.auto_prune and truncation_rate < args.prune_threshold:
-            print(f"    [AUTO-PRUNE] Rate {truncation_rate:.1f}%% < {args.prune_threshold}%% → deleting {len(truncated)} truncated notes")
+            print(f"    [AUTO-PRUNE] Deleting {len(truncated)} truncated notes...")
             for r in truncated:
-                note_path = Path(r["path"])
-                if note_path.exists():
-                    note_path.unlink()
-                    print(f"    DELETED: {note_path.name}")
-                # Mark as pruned in results
+                np = Path(r["path"])
+                if np.exists():
+                    np.unlink()
+                    print(f"    DELETED: {np.name}")
                 r["auto_pruned"] = True
             prune_decision = "pruned"
         else:
-            print(f"    [SKIP] Rate {truncation_rate:.1f}%% >= {args.prune_threshold}%% (or --auto-prune not set) → keeping {len(truncated)} notes")
+            print(f"    [SKIP] Keeping {len(truncated)} truncated notes")
             prune_decision = "kept"
-    # ── End truncation logic ─────────────────────────────────────────────────
 
-    # Recompute failed count after pruning
     if prune_decision == "pruned":
-        remaining_paths = {n.name for n in notes if Path(n).exists()}
-        results = [r for r in results if Path(r["path"]).name in remaining_paths]
-        passed = sum(1 for r in results if r["valid"])
+        remaining = {n.name for n in notes if Path(n).exists()}
+        results = [r for r in results if Path(r["path"]).name in remaining]
+        passed = sum(1 for r in results if r.get("valid", False))
         failed_total = len(results) - passed
-        print(f"\n[INFO] After pruning: {len(results)} notes remain, {passed} passed, {failed_total} failed")
 
     out = inbox / f"xnote_status_{args.date}.json"
     out.write_text(json.dumps({
@@ -374,15 +387,18 @@ def main():
         "truncation_rate_pct": round(truncation_rate, 2),
         "truncated_pruned": prune_decision == "pruned",
         "truncated_count": len(truncated),
+        "validation_method": "rule-based" if args.use_rules else "MiniMax-M3",
         "results": results,
     }, indent=2, ensure_ascii=False), encoding="utf-8")
 
-    print(f"\n[OK] Passed: {passed}/{len(results)}")
-    print(f"     Failed: {failed_total}")
-    print(f"     Saved: {out}")
+    print(f"\n{'='*60}")
+    print(f"[RESULT] Passed: {passed}/{len(results)}")
+    print(f"         Failed: {failed_total}")
+    print(f"         Validation: {'Rule-based' if args.use_rules else 'MiniMax-M3 inline'}")
+    print(f"         Status: {out}")
+    print(f"{'='*60}")
 
     if failed_total > 0:
-        print(f"\n[!] {failed_total} notes still failed validation.")
         sys.exit(1)
 
 

@@ -1,0 +1,1568 @@
+{
+  "fetched_at": "2026-08-21 05:27:01 +08:00",
+  "source": "fetch_timeline",
+  "posts": [
+    {
+      "source": "fxtwitter",
+      "status_id": "2090162525480366239",
+      "handle": "0xcodez",
+      "url": "https://api.fxtwitter.com/0xcodez/status/2090162525480366239",
+      "text": "SpaceXAI engineers (ex-Cursor):\n\n\"Right now I'm running 20-30 GrokBot agents, they are fixing 100% of my code bugs even when I sleep\n\nevery time our team gets feedback on GrokBot, my bots are automatically going off and fixing them\"\n\nIn a 28-minute podcast, SpaceXAI engineers reveal their actual GrokBot setup in a live demo\n\nIt's worth more than 100 articles on how to set up GrokBot, from engineers who built it\n\nWatch today, then read how to build your team of self-learning Grok agents in the article below",
+      "text_length": 511,
+      "author_display": "Codez",
+      "author_screen_name": "0xCodez",
+      "time_utc": "Wed Aug 19 19:42:34 +0000 2026",
+      "likes": 466,
+      "reposts": 72,
+      "replies": 26,
+      "views": 49337,
+      "language": "en",
+      "media": {
+        "all": [
+          {
+            "id": "2090160268781260800",
+            "url": "https://video.twimg.com/amplify_video/2090160268781260800/vid/avc1/1920x1080/OTgSzRQefAGDiU5U.mp4?tag=29",
+            "thumbnail_url": "https://pbs.twimg.com/amplify_video_thumb/2090160268781260800/img/skLLU4_QbCnCRlMd.jpg",
+            "duration": 1715.327,
+            "width": 1920,
+            "height": 1080,
+            "format": "video/mp4",
+            "type": "video",
+            "formats": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090160268781260800/pl/v3Jmc3uvEs3Yzmex.m3u8?tag=29&v=be8",
+                "container": "m3u8"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090160268781260800/vid/avc1/480x270/4boVML0h4dgtDi4-.mp4?tag=29",
+                "bitrate": 256000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090160268781260800/vid/avc1/640x360/OsvFYhx2J99pEnvM.mp4?tag=29",
+                "bitrate": 832000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090160268781260800/vid/avc1/1280x720/TgXtkvQ_ri88gllQ.mp4?tag=29",
+                "bitrate": 2176000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090160268781260800/vid/avc1/1920x1080/OTgSzRQefAGDiU5U.mp4?tag=29",
+                "bitrate": 10368000,
+                "container": "mp4",
+                "codec": "h264"
+              }
+            ],
+            "publisher": null,
+            "variants": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090160268781260800/pl/v3Jmc3uvEs3Yzmex.m3u8?tag=29&v=be8",
+                "bitrate": 0,
+                "content_type": "application/x-mpegURL"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090160268781260800/vid/avc1/480x270/4boVML0h4dgtDi4-.mp4?tag=29",
+                "bitrate": 256000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090160268781260800/vid/avc1/640x360/OsvFYhx2J99pEnvM.mp4?tag=29",
+                "bitrate": 832000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090160268781260800/vid/avc1/1280x720/TgXtkvQ_ri88gllQ.mp4?tag=29",
+                "bitrate": 2176000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090160268781260800/vid/avc1/1920x1080/OTgSzRQefAGDiU5U.mp4?tag=29",
+                "bitrate": 10368000,
+                "content_type": "video/mp4"
+              }
+            ]
+          }
+        ],
+        "videos": [
+          {
+            "id": "2090160268781260800",
+            "url": "https://video.twimg.com/amplify_video/2090160268781260800/vid/avc1/1920x1080/OTgSzRQefAGDiU5U.mp4?tag=29",
+            "thumbnail_url": "https://pbs.twimg.com/amplify_video_thumb/2090160268781260800/img/skLLU4_QbCnCRlMd.jpg",
+            "duration": 1715.327,
+            "width": 1920,
+            "height": 1080,
+            "format": "video/mp4",
+            "type": "video",
+            "formats": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090160268781260800/pl/v3Jmc3uvEs3Yzmex.m3u8?tag=29&v=be8",
+                "container": "m3u8"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090160268781260800/vid/avc1/480x270/4boVML0h4dgtDi4-.mp4?tag=29",
+                "bitrate": 256000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090160268781260800/vid/avc1/640x360/OsvFYhx2J99pEnvM.mp4?tag=29",
+                "bitrate": 832000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090160268781260800/vid/avc1/1280x720/TgXtkvQ_ri88gllQ.mp4?tag=29",
+                "bitrate": 2176000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090160268781260800/vid/avc1/1920x1080/OTgSzRQefAGDiU5U.mp4?tag=29",
+                "bitrate": 10368000,
+                "container": "mp4",
+                "codec": "h264"
+              }
+            ],
+            "publisher": null,
+            "variants": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090160268781260800/pl/v3Jmc3uvEs3Yzmex.m3u8?tag=29&v=be8",
+                "bitrate": 0,
+                "content_type": "application/x-mpegURL"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090160268781260800/vid/avc1/480x270/4boVML0h4dgtDi4-.mp4?tag=29",
+                "bitrate": 256000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090160268781260800/vid/avc1/640x360/OsvFYhx2J99pEnvM.mp4?tag=29",
+                "bitrate": 832000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090160268781260800/vid/avc1/1280x720/TgXtkvQ_ri88gllQ.mp4?tag=29",
+                "bitrate": 2176000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090160268781260800/vid/avc1/1920x1080/OTgSzRQefAGDiU5U.mp4?tag=29",
+                "bitrate": 10368000,
+                "content_type": "video/mp4"
+              }
+            ]
+          }
+        ]
+      },
+      "content_hash": "1b118fcf6200c816b548722cd7aa424a3714c6e6fdd70277a0a9383a190990b1",
+      "captured_at": "2026-08-21 05:27:03 +08:00",
+      "meta": {
+        "handle": "0xcodez",
+        "status_id": "2090162525480366239",
+        "url": "https://x.com/i/status/2090162525480366239",
+        "time_utc": "2026-08-19T19:42:34.000Z",
+        "taipei_date": "2026-08-20",
+        "text_preview": "SpaceXAI 工程師（前 Cursor 員工）：\n\n「現在我正在運行 20-30 個 GrokBot 代理，它們甚至在我睡覺時也能修復 100% 的程式碼錯誤\n\n每次我們的團隊收到對 GrokBot 的回饋，我的機器人就會自動啟動並修復它們」\n\n在一個 28 分鐘的播客中，SpaceXAI 工程師透過現場示範揭示了他們實際的 GrokBot 設定",
+        "likes": 466,
+        "reposts": 75,
+        "replies": 26
+      }
+    },
+    {
+      "source": "fxtwitter",
+      "status_id": "2090418887032803436",
+      "handle": "0xjeff",
+      "url": "https://api.fxtwitter.com/0xjeff/status/2090418887032803436",
+      "text": "Majors price go up\n   ⤷ TVL & Revenue go up\n       ⤷ Revenue-generating tokens go up\n           ⤷ Onchain speculation comes back\n               ⤷ IDO & launches return\n                  ⤷ Points & Airdrops become valuable\n                      ⤷ DeFi % APY go up\n\nThings are about to be back",
+      "text_length": 291,
+      "author_display": "0xJeff",
+      "author_screen_name": "0xJeff",
+      "time_utc": "Thu Aug 20 12:41:15 +0000 2026",
+      "likes": 39,
+      "reposts": 2,
+      "replies": 12,
+      "views": 4409,
+      "language": "en",
+      "media": {},
+      "content_hash": "da1a1de4183e3bf1ea7b9247a0db78da22dfcbbb7e8e45806696329c9f02264a",
+      "captured_at": "2026-08-21 05:27:05 +08:00",
+      "meta": {
+        "handle": "0xjeff",
+        "status_id": "2090418887032803436",
+        "url": "https://x.com/i/status/2090418887032803436",
+        "time_utc": "2026-08-20T12:41:15.000Z",
+        "taipei_date": "2026-08-20",
+        "text_preview": "Majors price go up\n   ⤷ TVL & Revenue go up\n       ⤷ Revenue-generating tokens go up\n           ⤷ Onchain speculation comes back\n               ⤷ IDO & launches return\n                  ⤷ Points & Airdrops become valuable\n                      ⤷ DeFi % APY go up\n\nThings are",
+        "likes": 39,
+        "reposts": 2,
+        "replies": 12
+      }
+    },
+    {
+      "source": "fxtwitter",
+      "status_id": "2090446223006179383",
+      "handle": "0xjeyx",
+      "url": "https://api.fxtwitter.com/0xjeyx/status/2090446223006179383",
+      "text": "The guy whose AI photo app does $105,000 a month with zero employees, on Lex Fridman: \"I don't raise money. I do everything myself. I'm the designer, I'm the developer, I make the logo.\"\n\nThis is him explaining how one person ships that fast - and the thing that slows everybody else down.\n\nHe builds an idea in two weeks, launches it, and drops it if nobody pays.\n\nThen he points at Google. It had the data, the tech and the engineers to ship ChatGPT first, and shipped nothing.\n\nHe works from a laptop in shorts, on vanilla PHP, jQuery and SQLite.\n\nFounder friends sitting on hundreds of millions in funding tell him privately they would do it his way next time.\n\nEvery number he posts is public, and every one of them was built by one person.\n\nWatch him defend working alone, then start the ladder in the article below.",
+      "text_length": 822,
+      "author_display": "Jey",
+      "author_screen_name": "0xJeyx",
+      "time_utc": "Thu Aug 20 14:29:52 +0000 2026",
+      "likes": 7,
+      "reposts": 0,
+      "replies": 0,
+      "views": 358,
+      "language": "en",
+      "media": {
+        "all": [
+          {
+            "id": "2090446074540384256",
+            "url": "https://video.twimg.com/amplify_video/2090446074540384256/vid/avc1/640x360/zzB4UP6SfJZgqr9k.mp4?tag=29",
+            "thumbnail_url": "https://pbs.twimg.com/amplify_video_thumb/2090446074540384256/img/NrJSts2PZDdtHO3B.jpg",
+            "duration": 476.403,
+            "width": 640,
+            "height": 360,
+            "format": "video/mp4",
+            "type": "video",
+            "formats": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090446074540384256/pl/AvAfegqPicwpKCtD.m3u8?tag=29",
+                "container": "m3u8"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090446074540384256/vid/avc1/480x270/0SwR42RIWmydyfh9.mp4?tag=29",
+                "bitrate": 256000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090446074540384256/vid/avc1/640x360/zzB4UP6SfJZgqr9k.mp4?tag=29",
+                "bitrate": 832000,
+                "container": "mp4",
+                "codec": "h264"
+              }
+            ],
+            "publisher": null,
+            "variants": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090446074540384256/pl/AvAfegqPicwpKCtD.m3u8?tag=29",
+                "bitrate": 0,
+                "content_type": "application/x-mpegURL"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090446074540384256/vid/avc1/480x270/0SwR42RIWmydyfh9.mp4?tag=29",
+                "bitrate": 256000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090446074540384256/vid/avc1/640x360/zzB4UP6SfJZgqr9k.mp4?tag=29",
+                "bitrate": 832000,
+                "content_type": "video/mp4"
+              }
+            ]
+          }
+        ],
+        "videos": [
+          {
+            "id": "2090446074540384256",
+            "url": "https://video.twimg.com/amplify_video/2090446074540384256/vid/avc1/640x360/zzB4UP6SfJZgqr9k.mp4?tag=29",
+            "thumbnail_url": "https://pbs.twimg.com/amplify_video_thumb/2090446074540384256/img/NrJSts2PZDdtHO3B.jpg",
+            "duration": 476.403,
+            "width": 640,
+            "height": 360,
+            "format": "video/mp4",
+            "type": "video",
+            "formats": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090446074540384256/pl/AvAfegqPicwpKCtD.m3u8?tag=29",
+                "container": "m3u8"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090446074540384256/vid/avc1/480x270/0SwR42RIWmydyfh9.mp4?tag=29",
+                "bitrate": 256000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090446074540384256/vid/avc1/640x360/zzB4UP6SfJZgqr9k.mp4?tag=29",
+                "bitrate": 832000,
+                "container": "mp4",
+                "codec": "h264"
+              }
+            ],
+            "publisher": null,
+            "variants": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090446074540384256/pl/AvAfegqPicwpKCtD.m3u8?tag=29",
+                "bitrate": 0,
+                "content_type": "application/x-mpegURL"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090446074540384256/vid/avc1/480x270/0SwR42RIWmydyfh9.mp4?tag=29",
+                "bitrate": 256000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090446074540384256/vid/avc1/640x360/zzB4UP6SfJZgqr9k.mp4?tag=29",
+                "bitrate": 832000,
+                "content_type": "video/mp4"
+              }
+            ]
+          }
+        ]
+      },
+      "content_hash": "dc23666555033e18d91bf8d47d1a7b218756db89a41d1c8051e3b5d5d099685d",
+      "captured_at": "2026-08-21 05:27:07 +08:00",
+      "meta": {
+        "handle": "0xjeyx",
+        "status_id": "2090446223006179383",
+        "url": "https://x.com/i/status/2090446223006179383",
+        "time_utc": "2026-08-20T14:29:52.000Z",
+        "taipei_date": "2026-08-20",
+        "text_preview": "The guy whose AI photo app does $105,000 a month with zero employees, on Lex Fridman: \"I don't raise money. I do everything myself. I'm the designer, I'm the developer, I make the logo.\"\n\nThis is him explaining how one person ships that fast - and the thing that slows everybody",
+        "likes": 7,
+        "reposts": 0,
+        "replies": 0
+      }
+    },
+    {
+      "source": "fxtwitter",
+      "status_id": "2090174314796535849",
+      "handle": "0xjeyx",
+      "url": "https://api.fxtwitter.com/0xjeyx/status/2090174314796535849",
+      "text": "Diana Hu (Partner at Y Combinator): \"You cannot outsource your conviction on the power of these tools.\"\n\n82% of firms under five people say AI does not apply to their business. This is her explaining why a deck never moves that number.\n\nHer fix: sit with the agents until you break your own priors about what is buildable.\n\n10:27, free, on Y Combinator. The line lands at 8:59.\n\nThe article below is how one person changes that answer.",
+      "text_length": 435,
+      "author_display": "Jey",
+      "author_screen_name": "0xJeyx",
+      "time_utc": "Wed Aug 19 20:29:24 +0000 2026",
+      "likes": 1,
+      "reposts": 0,
+      "replies": 0,
+      "views": 372,
+      "language": "en",
+      "media": {
+        "all": [
+          {
+            "id": "2090174100127858689",
+            "url": "https://video.twimg.com/amplify_video/2090174100127858689/vid/avc1/1920x1080/IAE1_rsEiBmoN6bZ.mp4?tag=29",
+            "thumbnail_url": "https://pbs.twimg.com/amplify_video_thumb/2090174100127858689/img/9Fypt5lgooBPcw-D.jpg",
+            "duration": 628.54,
+            "width": 1920,
+            "height": 1080,
+            "format": "video/mp4",
+            "type": "video",
+            "formats": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090174100127858689/pl/vN6qP3x6UeDp9fvR.m3u8?tag=29",
+                "container": "m3u8"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090174100127858689/vid/avc1/480x270/pH_OegbsItpc4zIg.mp4?tag=29",
+                "bitrate": 256000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090174100127858689/vid/avc1/640x360/1YNkzZDCHj8XCxel.mp4?tag=29",
+                "bitrate": 832000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090174100127858689/vid/avc1/1280x720/Dr2BHUXii3sOpVv5.mp4?tag=29",
+                "bitrate": 2176000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090174100127858689/vid/avc1/1920x1080/IAE1_rsEiBmoN6bZ.mp4?tag=29",
+                "bitrate": 10368000,
+                "container": "mp4",
+                "codec": "h264"
+              }
+            ],
+            "publisher": null,
+            "variants": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090174100127858689/pl/vN6qP3x6UeDp9fvR.m3u8?tag=29",
+                "bitrate": 0,
+                "content_type": "application/x-mpegURL"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090174100127858689/vid/avc1/480x270/pH_OegbsItpc4zIg.mp4?tag=29",
+                "bitrate": 256000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090174100127858689/vid/avc1/640x360/1YNkzZDCHj8XCxel.mp4?tag=29",
+                "bitrate": 832000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090174100127858689/vid/avc1/1280x720/Dr2BHUXii3sOpVv5.mp4?tag=29",
+                "bitrate": 2176000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090174100127858689/vid/avc1/1920x1080/IAE1_rsEiBmoN6bZ.mp4?tag=29",
+                "bitrate": 10368000,
+                "content_type": "video/mp4"
+              }
+            ]
+          }
+        ],
+        "videos": [
+          {
+            "id": "2090174100127858689",
+            "url": "https://video.twimg.com/amplify_video/2090174100127858689/vid/avc1/1920x1080/IAE1_rsEiBmoN6bZ.mp4?tag=29",
+            "thumbnail_url": "https://pbs.twimg.com/amplify_video_thumb/2090174100127858689/img/9Fypt5lgooBPcw-D.jpg",
+            "duration": 628.54,
+            "width": 1920,
+            "height": 1080,
+            "format": "video/mp4",
+            "type": "video",
+            "formats": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090174100127858689/pl/vN6qP3x6UeDp9fvR.m3u8?tag=29",
+                "container": "m3u8"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090174100127858689/vid/avc1/480x270/pH_OegbsItpc4zIg.mp4?tag=29",
+                "bitrate": 256000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090174100127858689/vid/avc1/640x360/1YNkzZDCHj8XCxel.mp4?tag=29",
+                "bitrate": 832000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090174100127858689/vid/avc1/1280x720/Dr2BHUXii3sOpVv5.mp4?tag=29",
+                "bitrate": 2176000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090174100127858689/vid/avc1/1920x1080/IAE1_rsEiBmoN6bZ.mp4?tag=29",
+                "bitrate": 10368000,
+                "container": "mp4",
+                "codec": "h264"
+              }
+            ],
+            "publisher": null,
+            "variants": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090174100127858689/pl/vN6qP3x6UeDp9fvR.m3u8?tag=29",
+                "bitrate": 0,
+                "content_type": "application/x-mpegURL"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090174100127858689/vid/avc1/480x270/pH_OegbsItpc4zIg.mp4?tag=29",
+                "bitrate": 256000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090174100127858689/vid/avc1/640x360/1YNkzZDCHj8XCxel.mp4?tag=29",
+                "bitrate": 832000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090174100127858689/vid/avc1/1280x720/Dr2BHUXii3sOpVv5.mp4?tag=29",
+                "bitrate": 2176000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090174100127858689/vid/avc1/1920x1080/IAE1_rsEiBmoN6bZ.mp4?tag=29",
+                "bitrate": 10368000,
+                "content_type": "video/mp4"
+              }
+            ]
+          }
+        ]
+      },
+      "content_hash": "27055ee0c6755be72ebec1b3f7b03d07ba7a1e6c4ba8aa9f1c0784f6e4f7c4b9",
+      "captured_at": "2026-08-21 05:27:09 +08:00",
+      "meta": {
+        "handle": "0xjeyx",
+        "status_id": "2090174314796535849",
+        "url": "https://x.com/i/status/2090174314796535849",
+        "time_utc": "2026-08-19T20:29:24.000Z",
+        "taipei_date": "2026-08-20",
+        "text_preview": "Diana Hu (Partner at Y Combinator): \"You cannot outsource your conviction on the power of these tools.\"\n\n82% of firms under five people say AI does not apply to their business. This is her explaining why a deck never moves that number.\n\nHer fix: sit with the agents until you",
+        "likes": 1,
+        "reposts": 0,
+        "replies": 0
+      }
+    },
+    {
+      "source": "fxtwitter",
+      "status_id": "2090224111960109105",
+      "handle": "0xmoysei",
+      "url": "https://api.fxtwitter.com/0xmoysei/status/2090224111960109105",
+      "text": "Hundreds of billions of dollars are lent overnight on security and then repaid the following morning in 2008 that system came to an end, and almost no one attends the lecture which explains it.\n\nGary Gorton from Yale, standing on the lectern at a law school, is going over what actually broke.\n\nThere was no waiting outside the branches; the withdrawals took place between institutions and were charged in the form of haircuts on securities which no one could value.\n\nLook at the part in which he demonstrates how a small change to that haircut eliminates the borrower.\n\nThe run could not be seen since the depositors were banks.",
+      "text_length": 629,
+      "author_display": "Moysei",
+      "author_screen_name": "0xMoysei",
+      "time_utc": "Wed Aug 19 23:47:17 +0000 2026",
+      "likes": 21,
+      "reposts": 0,
+      "replies": 6,
+      "views": 482,
+      "language": "en",
+      "media": {
+        "all": [
+          {
+            "id": "2090221661698031616",
+            "url": "https://video.twimg.com/amplify_video/2090221661698031616/vid/avc1/1216x672/aaeoXrkqrqY-GgGl.mp4?tag=29",
+            "thumbnail_url": "https://pbs.twimg.com/amplify_video_thumb/2090221661698031616/img/0vM-mgCV9KaveCDD.jpg",
+            "duration": 3192.151,
+            "width": 1216,
+            "height": 672,
+            "format": "video/mp4",
+            "type": "video",
+            "formats": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090221661698031616/pl/WLT1pkYcs2X9hWOH.m3u8?tag=29",
+                "container": "m3u8"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090221661698031616/vid/avc1/488x270/cM30_prmsg_dyxN0.mp4?tag=29",
+                "bitrate": 256000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090221661698031616/vid/avc1/650x360/P1m0Y3XBZYdcSvSh.mp4?tag=29",
+                "bitrate": 832000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090221661698031616/vid/avc1/1216x672/aaeoXrkqrqY-GgGl.mp4?tag=29",
+                "bitrate": 2176000,
+                "container": "mp4",
+                "codec": "h264"
+              }
+            ],
+            "publisher": null,
+            "variants": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090221661698031616/pl/WLT1pkYcs2X9hWOH.m3u8?tag=29",
+                "bitrate": 0,
+                "content_type": "application/x-mpegURL"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090221661698031616/vid/avc1/488x270/cM30_prmsg_dyxN0.mp4?tag=29",
+                "bitrate": 256000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090221661698031616/vid/avc1/650x360/P1m0Y3XBZYdcSvSh.mp4?tag=29",
+                "bitrate": 832000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090221661698031616/vid/avc1/1216x672/aaeoXrkqrqY-GgGl.mp4?tag=29",
+                "bitrate": 2176000,
+                "content_type": "video/mp4"
+              }
+            ]
+          }
+        ],
+        "videos": [
+          {
+            "id": "2090221661698031616",
+            "url": "https://video.twimg.com/amplify_video/2090221661698031616/vid/avc1/1216x672/aaeoXrkqrqY-GgGl.mp4?tag=29",
+            "thumbnail_url": "https://pbs.twimg.com/amplify_video_thumb/2090221661698031616/img/0vM-mgCV9KaveCDD.jpg",
+            "duration": 3192.151,
+            "width": 1216,
+            "height": 672,
+            "format": "video/mp4",
+            "type": "video",
+            "formats": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090221661698031616/pl/WLT1pkYcs2X9hWOH.m3u8?tag=29",
+                "container": "m3u8"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090221661698031616/vid/avc1/488x270/cM30_prmsg_dyxN0.mp4?tag=29",
+                "bitrate": 256000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090221661698031616/vid/avc1/650x360/P1m0Y3XBZYdcSvSh.mp4?tag=29",
+                "bitrate": 832000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090221661698031616/vid/avc1/1216x672/aaeoXrkqrqY-GgGl.mp4?tag=29",
+                "bitrate": 2176000,
+                "container": "mp4",
+                "codec": "h264"
+              }
+            ],
+            "publisher": null,
+            "variants": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090221661698031616/pl/WLT1pkYcs2X9hWOH.m3u8?tag=29",
+                "bitrate": 0,
+                "content_type": "application/x-mpegURL"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090221661698031616/vid/avc1/488x270/cM30_prmsg_dyxN0.mp4?tag=29",
+                "bitrate": 256000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090221661698031616/vid/avc1/650x360/P1m0Y3XBZYdcSvSh.mp4?tag=29",
+                "bitrate": 832000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090221661698031616/vid/avc1/1216x672/aaeoXrkqrqY-GgGl.mp4?tag=29",
+                "bitrate": 2176000,
+                "content_type": "video/mp4"
+              }
+            ]
+          }
+        ]
+      },
+      "content_hash": "d33c3cf36f0326742c0fb17ce22b13dd0f58674765212fc31f77c62ce4922630",
+      "captured_at": "2026-08-21 05:27:11 +08:00",
+      "meta": {
+        "handle": "0xmoysei",
+        "status_id": "2090224111960109105",
+        "url": "https://x.com/i/status/2090224111960109105",
+        "time_utc": "2026-08-19T23:47:17.000Z",
+        "taipei_date": "2026-08-20",
+        "text_preview": "Hundreds of billions of dollars are lent overnight on security and then repaid the following morning in 2008 that system came to an end, and almost no one attends the lecture which explains it.\n\nGary Gorton from Yale, standing on the lectern at a law school, is going over what",
+        "likes": 21,
+        "reposts": 0,
+        "replies": 6
+      }
+    },
+    {
+      "source": "fxtwitter",
+      "status_id": "2090425173203693989",
+      "handle": "0xwast3",
+      "url": "https://api.fxtwitter.com/0xwast3/status/2090425173203693989",
+      "text": "https://x.com/i/article/2090404420865425409",
+      "text_length": 43,
+      "author_display": "wast3",
+      "author_screen_name": "0xWast3",
+      "time_utc": "Thu Aug 20 13:06:14 +0000 2026",
+      "likes": 32,
+      "reposts": 0,
+      "replies": 16,
+      "views": 4240,
+      "language": null,
+      "media": {},
+      "content_hash": "6e6430933a794b72673f692c961581caa9c231b7fa740e36bfe46e05e7de99b7",
+      "captured_at": "2026-08-21 05:27:13 +08:00",
+      "meta": {
+        "handle": "0xwast3",
+        "status_id": "2090425173203693989",
+        "url": "https://x.com/i/status/2090425173203693989",
+        "time_utc": "2026-08-20T13:06:14.000Z",
+        "taipei_date": "2026-08-20",
+        "text_preview": "",
+        "likes": 32,
+        "reposts": 3,
+        "replies": 16
+      }
+    },
+    {
+      "source": "fxtwitter",
+      "status_id": "2090379733758284160",
+      "handle": "0xwast3",
+      "url": "https://api.fxtwitter.com/0xwast3/status/2090379733758284160",
+      "text": "Anthropic is on a $47 billion run rate and still burning most of it on compute. Every token you send them is a cost they pass straight to you.\n\nYou're not buying intelligence. You're renting it, per query, forever.\n\nAnd RAG rents the dumb way. Twenty chunks pulled, nineteen unrelated, the full bill on all twenty.\n\nWorse, it re-buys the same reasoning every single time you ask.\n\nA graph pays once. Extract the entities and edges up front, then never re-derive them again.\n\nThe token spend was never the real loss. The real loss is owning nothing when it's over.\n\nBurn $10,000 in API calls on retrieval and you have receipts. Spend it building a graph and you have an asset.\n\nOne depreciates the second the next model ships. The other gets denser every document you add.\n\nThat's the split nobody prices: rented answers versus a structure you keep.\n\nThe labs need the first. Their whole valuation assumes you never choose the second.\n\nDon't let this die in your bookmarks. Save it, add up last month's retrieval spend, and put the same money into a graph you'll still own next year.",
+      "text_length": 1082,
+      "author_display": "wast3",
+      "author_screen_name": "0xWast3",
+      "time_utc": "Thu Aug 20 10:05:40 +0000 2026",
+      "likes": 57,
+      "reposts": 4,
+      "replies": 18,
+      "views": 2690,
+      "language": "en",
+      "media": {
+        "all": [
+          {
+            "id": "2090378497181007874",
+            "url": "https://video.twimg.com/amplify_video/2090378497181007874/vid/avc1/2160x2598/Z6CKVTl1WaBqsXpF.mp4?tag=29",
+            "thumbnail_url": "https://pbs.twimg.com/amplify_video_thumb/2090378497181007874/img/rB474oIiif1Ymqi_.jpg",
+            "duration": 40.833,
+            "width": 2160,
+            "height": 2598,
+            "format": "video/mp4",
+            "type": "video",
+            "formats": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090378497181007874/pl/hx01Lm7UCytDb3lY.m3u8?tag=29&v=cfc",
+                "container": "m3u8"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090378497181007874/vid/avc1/320x384/l9Ddp7dwBEVMc9jJ.mp4?tag=29",
+                "bitrate": 632000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090378497181007874/vid/avc1/480x576/0HlYuImOndef-3Ci.mp4?tag=29",
+                "bitrate": 950000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090378497181007874/vid/avc1/720x866/KRVDi56cAzJpg0YJ.mp4?tag=29",
+                "bitrate": 2176000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090378497181007874/vid/avc1/1080x1298/xwl9GmQDiv1saa2Y.mp4?tag=29",
+                "bitrate": 10368000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090378497181007874/vid/avc1/2160x2598/Z6CKVTl1WaBqsXpF.mp4?tag=29",
+                "bitrate": 25128000,
+                "container": "mp4",
+                "codec": "h264"
+              }
+            ],
+            "publisher": null,
+            "variants": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090378497181007874/pl/hx01Lm7UCytDb3lY.m3u8?tag=29&v=cfc",
+                "bitrate": 0,
+                "content_type": "application/x-mpegURL"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090378497181007874/vid/avc1/320x384/l9Ddp7dwBEVMc9jJ.mp4?tag=29",
+                "bitrate": 632000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090378497181007874/vid/avc1/480x576/0HlYuImOndef-3Ci.mp4?tag=29",
+                "bitrate": 950000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090378497181007874/vid/avc1/720x866/KRVDi56cAzJpg0YJ.mp4?tag=29",
+                "bitrate": 2176000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090378497181007874/vid/avc1/1080x1298/xwl9GmQDiv1saa2Y.mp4?tag=29",
+                "bitrate": 10368000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090378497181007874/vid/avc1/2160x2598/Z6CKVTl1WaBqsXpF.mp4?tag=29",
+                "bitrate": 25128000,
+                "content_type": "video/mp4"
+              }
+            ]
+          }
+        ],
+        "videos": [
+          {
+            "id": "2090378497181007874",
+            "url": "https://video.twimg.com/amplify_video/2090378497181007874/vid/avc1/2160x2598/Z6CKVTl1WaBqsXpF.mp4?tag=29",
+            "thumbnail_url": "https://pbs.twimg.com/amplify_video_thumb/2090378497181007874/img/rB474oIiif1Ymqi_.jpg",
+            "duration": 40.833,
+            "width": 2160,
+            "height": 2598,
+            "format": "video/mp4",
+            "type": "video",
+            "formats": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090378497181007874/pl/hx01Lm7UCytDb3lY.m3u8?tag=29&v=cfc",
+                "container": "m3u8"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090378497181007874/vid/avc1/320x384/l9Ddp7dwBEVMc9jJ.mp4?tag=29",
+                "bitrate": 632000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090378497181007874/vid/avc1/480x576/0HlYuImOndef-3Ci.mp4?tag=29",
+                "bitrate": 950000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090378497181007874/vid/avc1/720x866/KRVDi56cAzJpg0YJ.mp4?tag=29",
+                "bitrate": 2176000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090378497181007874/vid/avc1/1080x1298/xwl9GmQDiv1saa2Y.mp4?tag=29",
+                "bitrate": 10368000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090378497181007874/vid/avc1/2160x2598/Z6CKVTl1WaBqsXpF.mp4?tag=29",
+                "bitrate": 25128000,
+                "container": "mp4",
+                "codec": "h264"
+              }
+            ],
+            "publisher": null,
+            "variants": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090378497181007874/pl/hx01Lm7UCytDb3lY.m3u8?tag=29&v=cfc",
+                "bitrate": 0,
+                "content_type": "application/x-mpegURL"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090378497181007874/vid/avc1/320x384/l9Ddp7dwBEVMc9jJ.mp4?tag=29",
+                "bitrate": 632000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090378497181007874/vid/avc1/480x576/0HlYuImOndef-3Ci.mp4?tag=29",
+                "bitrate": 950000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090378497181007874/vid/avc1/720x866/KRVDi56cAzJpg0YJ.mp4?tag=29",
+                "bitrate": 2176000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090378497181007874/vid/avc1/1080x1298/xwl9GmQDiv1saa2Y.mp4?tag=29",
+                "bitrate": 10368000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090378497181007874/vid/avc1/2160x2598/Z6CKVTl1WaBqsXpF.mp4?tag=29",
+                "bitrate": 25128000,
+                "content_type": "video/mp4"
+              }
+            ]
+          }
+        ]
+      },
+      "content_hash": "e306677aacda8a48228bc8ab254b517d7bc27c3dfc32431c8e3712d844e08883",
+      "captured_at": "2026-08-21 05:27:15 +08:00",
+      "meta": {
+        "handle": "0xwast3",
+        "status_id": "2090379733758284160",
+        "url": "https://x.com/i/status/2090379733758284160",
+        "time_utc": "2026-08-20T10:05:40.000Z",
+        "taipei_date": "2026-08-20",
+        "text_preview": "Anthropic is on a $47 billion run rate and still burning most of it on compute. Every token you send them is a cost they pass straight to you.\n\nYou're not buying intelligence. You're renting it, per query, forever.\n\nAnd RAG rents the dumb way. Twenty chunks pulled, nineteen",
+        "likes": 57,
+        "reposts": 4,
+        "replies": 18
+      }
+    },
+    {
+      "source": "fxtwitter",
+      "status_id": "2090116546764915136",
+      "handle": "0xwast3",
+      "url": "https://api.fxtwitter.com/0xwast3/status/2090116546764915136",
+      "text": "OpenAI raised at $852 billion. Anthropic just cleared $965 billion. Both business models quietly need your data to stay trapped inside their API.\n\nThat's the trade you signed. Your knowledge lives as loose text, and you rent intelligence by the token to make sense of it.\n\nEvery query ships the whole pile back to them. You pay frontier rate to re-read what you already own.\n\nRAG made that feel efficient. It isn't. Twenty chunks retrieved, nineteen noise, all twenty billed.\n\nAnd it still can't answer what sits across three documents that share no words.\n\nA graph moves the intelligence to your side. Extract the structure once, then walk paths you own.\n\nThe connection isn't rented anymore. It's stored, and every query after is nearly free.\n\nHere's what breaks the rent: Kimi K3's weights are public. The extractor now runs on your hardware, not their meter.\n\nSo the one expensive step - turning documents into a graph - stops paying a lab at all.\n\nTwo labs are worth nearly two trillion combined betting you never move that step in-house.\n\nDon't let this rot in your bookmarks.\n\nSave it, point K3 at your documents tonight, and build the graph the meter was counting on you to keep renting.",
+      "text_length": 1195,
+      "author_display": "wast3",
+      "author_screen_name": "0xWast3",
+      "time_utc": "Wed Aug 19 16:39:51 +0000 2026",
+      "likes": 132,
+      "reposts": 17,
+      "replies": 18,
+      "views": 9233,
+      "language": "en",
+      "media": {
+        "all": [
+          {
+            "id": "2090115339300306944",
+            "url": "https://video.twimg.com/amplify_video/2090115339300306944/vid/avc1/2160x2718/h7Cmh5nZh3QZu7nq.mp4?tag=29",
+            "thumbnail_url": "https://pbs.twimg.com/amplify_video_thumb/2090115339300306944/img/cQUMVHlnsUiU7hlt.jpg",
+            "duration": 41.033,
+            "width": 2160,
+            "height": 2718,
+            "format": "video/mp4",
+            "type": "video",
+            "formats": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090115339300306944/pl/OQ2DzkU7H0AQNk_m.m3u8?tag=29&v=cfc",
+                "container": "m3u8"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090115339300306944/vid/avc1/320x402/UGgf5t1GF1HBDM31.mp4?tag=29",
+                "bitrate": 632000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090115339300306944/vid/avc1/480x604/vErZKA5vDfSbfi_9.mp4?tag=29",
+                "bitrate": 950000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090115339300306944/vid/avc1/720x906/k5VLmZtAGsl39lr3.mp4?tag=29",
+                "bitrate": 2176000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090115339300306944/vid/avc1/1080x1358/JdS388THWTkYX8Qk.mp4?tag=29",
+                "bitrate": 10368000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090115339300306944/vid/avc1/2160x2718/h7Cmh5nZh3QZu7nq.mp4?tag=29",
+                "bitrate": 25128000,
+                "container": "mp4",
+                "codec": "h264"
+              }
+            ],
+            "publisher": null,
+            "variants": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090115339300306944/pl/OQ2DzkU7H0AQNk_m.m3u8?tag=29&v=cfc",
+                "bitrate": 0,
+                "content_type": "application/x-mpegURL"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090115339300306944/vid/avc1/320x402/UGgf5t1GF1HBDM31.mp4?tag=29",
+                "bitrate": 632000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090115339300306944/vid/avc1/480x604/vErZKA5vDfSbfi_9.mp4?tag=29",
+                "bitrate": 950000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090115339300306944/vid/avc1/720x906/k5VLmZtAGsl39lr3.mp4?tag=29",
+                "bitrate": 2176000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090115339300306944/vid/avc1/1080x1358/JdS388THWTkYX8Qk.mp4?tag=29",
+                "bitrate": 10368000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090115339300306944/vid/avc1/2160x2718/h7Cmh5nZh3QZu7nq.mp4?tag=29",
+                "bitrate": 25128000,
+                "content_type": "video/mp4"
+              }
+            ]
+          }
+        ],
+        "videos": [
+          {
+            "id": "2090115339300306944",
+            "url": "https://video.twimg.com/amplify_video/2090115339300306944/vid/avc1/2160x2718/h7Cmh5nZh3QZu7nq.mp4?tag=29",
+            "thumbnail_url": "https://pbs.twimg.com/amplify_video_thumb/2090115339300306944/img/cQUMVHlnsUiU7hlt.jpg",
+            "duration": 41.033,
+            "width": 2160,
+            "height": 2718,
+            "format": "video/mp4",
+            "type": "video",
+            "formats": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090115339300306944/pl/OQ2DzkU7H0AQNk_m.m3u8?tag=29&v=cfc",
+                "container": "m3u8"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090115339300306944/vid/avc1/320x402/UGgf5t1GF1HBDM31.mp4?tag=29",
+                "bitrate": 632000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090115339300306944/vid/avc1/480x604/vErZKA5vDfSbfi_9.mp4?tag=29",
+                "bitrate": 950000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090115339300306944/vid/avc1/720x906/k5VLmZtAGsl39lr3.mp4?tag=29",
+                "bitrate": 2176000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090115339300306944/vid/avc1/1080x1358/JdS388THWTkYX8Qk.mp4?tag=29",
+                "bitrate": 10368000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090115339300306944/vid/avc1/2160x2718/h7Cmh5nZh3QZu7nq.mp4?tag=29",
+                "bitrate": 25128000,
+                "container": "mp4",
+                "codec": "h264"
+              }
+            ],
+            "publisher": null,
+            "variants": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090115339300306944/pl/OQ2DzkU7H0AQNk_m.m3u8?tag=29&v=cfc",
+                "bitrate": 0,
+                "content_type": "application/x-mpegURL"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090115339300306944/vid/avc1/320x402/UGgf5t1GF1HBDM31.mp4?tag=29",
+                "bitrate": 632000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090115339300306944/vid/avc1/480x604/vErZKA5vDfSbfi_9.mp4?tag=29",
+                "bitrate": 950000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090115339300306944/vid/avc1/720x906/k5VLmZtAGsl39lr3.mp4?tag=29",
+                "bitrate": 2176000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090115339300306944/vid/avc1/1080x1358/JdS388THWTkYX8Qk.mp4?tag=29",
+                "bitrate": 10368000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090115339300306944/vid/avc1/2160x2718/h7Cmh5nZh3QZu7nq.mp4?tag=29",
+                "bitrate": 25128000,
+                "content_type": "video/mp4"
+              }
+            ]
+          }
+        ]
+      },
+      "content_hash": "7a9357a6d2c33d1c925e1bce14d4d84c5794a76410c53550edd1bce6f2ea575b",
+      "captured_at": "2026-08-21 05:27:16 +08:00",
+      "meta": {
+        "handle": "0xwast3",
+        "status_id": "2090116546764915136",
+        "url": "https://x.com/i/status/2090116546764915136",
+        "time_utc": "2026-08-19T16:39:51.000Z",
+        "taipei_date": "2026-08-20",
+        "text_preview": "OpenAI 的估值達到 8520 億美元。Anthropic 剛剛突破 9650 億美元。這兩個商業模式悄無聲息地需要你的資料被困在它們的 API 內，無法脫身。\n\n那是你簽下的交易。你的知識以鬆散的文字形式存在，而你按 token 租用智慧來理解它。",
+        "likes": 132,
+        "reposts": 17,
+        "replies": 18
+      }
+    },
+    {
+      "source": "fxtwitter",
+      "status_id": "2090423635680907580",
+      "handle": "0xwhrrari",
+      "url": "https://api.fxtwitter.com/0xwhrrari/status/2090423635680907580",
+      "text": "Anthropic Research Lead:\n\n\"99% of our engineers run swarms of 300+ self-improving agents\"\n\n\"Now everyone is building agentic graphs\"\n\nIn a 20-minute session, an Anthropic team member breaks down how graph engineering turns isolated agents into systems that improve themselves\n\nThe real setup is Claude running through graph workflows, plan mode, and dynamic orchestration\n\nAgents → Loops → Graphs → Self-Improving Systems\n\nBetter than most $300 graph engineering courses\n\nBookmark and watch the talk\n\nThen read the article below",
+      "text_length": 528,
+      "author_display": "rari",
+      "author_screen_name": "0xwhrrari",
+      "time_utc": "Thu Aug 20 13:00:07 +0000 2026",
+      "likes": 67,
+      "reposts": 7,
+      "replies": 10,
+      "views": 5661,
+      "language": "en",
+      "media": {
+        "all": [
+          {
+            "id": "2090410728578576384",
+            "url": "https://video.twimg.com/amplify_video/2090410728578576384/vid/avc1/1284x720/D6qTAX94n18uVH3m.mp4?tag=29",
+            "thumbnail_url": "https://pbs.twimg.com/amplify_video_thumb/2090410728578576384/img/RKrmqMs0tm7beqO6.jpg",
+            "duration": 1161.53,
+            "width": 1285,
+            "height": 720,
+            "format": "video/mp4",
+            "type": "video",
+            "formats": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090410728578576384/pl/vav7la_NQfofSeQP.m3u8?tag=29",
+                "container": "m3u8"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090410728578576384/vid/avc1/480x270/UeSdU0BU7SAE1uXi.mp4?tag=29",
+                "bitrate": 256000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090410728578576384/vid/avc1/642x360/jVCLTxs5rh6prhPl.mp4?tag=29",
+                "bitrate": 832000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090410728578576384/vid/avc1/1284x720/D6qTAX94n18uVH3m.mp4?tag=29",
+                "bitrate": 2176000,
+                "container": "mp4",
+                "codec": "h264"
+              }
+            ],
+            "publisher": null,
+            "variants": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090410728578576384/pl/vav7la_NQfofSeQP.m3u8?tag=29",
+                "bitrate": 0,
+                "content_type": "application/x-mpegURL"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090410728578576384/vid/avc1/480x270/UeSdU0BU7SAE1uXi.mp4?tag=29",
+                "bitrate": 256000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090410728578576384/vid/avc1/642x360/jVCLTxs5rh6prhPl.mp4?tag=29",
+                "bitrate": 832000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090410728578576384/vid/avc1/1284x720/D6qTAX94n18uVH3m.mp4?tag=29",
+                "bitrate": 2176000,
+                "content_type": "video/mp4"
+              }
+            ]
+          }
+        ],
+        "videos": [
+          {
+            "id": "2090410728578576384",
+            "url": "https://video.twimg.com/amplify_video/2090410728578576384/vid/avc1/1284x720/D6qTAX94n18uVH3m.mp4?tag=29",
+            "thumbnail_url": "https://pbs.twimg.com/amplify_video_thumb/2090410728578576384/img/RKrmqMs0tm7beqO6.jpg",
+            "duration": 1161.53,
+            "width": 1285,
+            "height": 720,
+            "format": "video/mp4",
+            "type": "video",
+            "formats": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090410728578576384/pl/vav7la_NQfofSeQP.m3u8?tag=29",
+                "container": "m3u8"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090410728578576384/vid/avc1/480x270/UeSdU0BU7SAE1uXi.mp4?tag=29",
+                "bitrate": 256000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090410728578576384/vid/avc1/642x360/jVCLTxs5rh6prhPl.mp4?tag=29",
+                "bitrate": 832000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090410728578576384/vid/avc1/1284x720/D6qTAX94n18uVH3m.mp4?tag=29",
+                "bitrate": 2176000,
+                "container": "mp4",
+                "codec": "h264"
+              }
+            ],
+            "publisher": null,
+            "variants": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090410728578576384/pl/vav7la_NQfofSeQP.m3u8?tag=29",
+                "bitrate": 0,
+                "content_type": "application/x-mpegURL"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090410728578576384/vid/avc1/480x270/UeSdU0BU7SAE1uXi.mp4?tag=29",
+                "bitrate": 256000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090410728578576384/vid/avc1/642x360/jVCLTxs5rh6prhPl.mp4?tag=29",
+                "bitrate": 832000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090410728578576384/vid/avc1/1284x720/D6qTAX94n18uVH3m.mp4?tag=29",
+                "bitrate": 2176000,
+                "content_type": "video/mp4"
+              }
+            ]
+          }
+        ]
+      },
+      "content_hash": "98438545ef80ef91eaed392c095369225ebde1b224e190d560d458867c95f15d",
+      "captured_at": "2026-08-21 05:27:19 +08:00",
+      "meta": {
+        "handle": "0xwhrrari",
+        "status_id": "2090423635680907580",
+        "url": "https://x.com/i/status/2090423635680907580",
+        "time_utc": "2026-08-20T13:00:07.000Z",
+        "taipei_date": "2026-08-20",
+        "text_preview": "Anthropic Research Lead:\n\n\"99% of our engineers run swarms of 300+ self-improving agents\"\n\n\"Now everyone is building agentic graphs\"\n\nIn a 20-minute session, an Anthropic team member breaks down how graph engineering turns isolated agents into systems that improve themselves\n\nThe",
+        "likes": 67,
+        "reposts": 7,
+        "replies": 10
+      }
+    },
+    {
+      "source": "fxtwitter",
+      "status_id": "2090456122822115457",
+      "handle": "adrianpunk115",
+      "url": "https://api.fxtwitter.com/adrianpunk115/status/2090456122822115457",
+      "text": "好像对这四个词有了更深的理解",
+      "text_length": 14,
+      "author_display": "Adrian Punk",
+      "author_screen_name": "AdrianPunk115",
+      "time_utc": "Thu Aug 20 15:09:13 +0000 2026",
+      "likes": 8,
+      "reposts": 0,
+      "replies": 0,
+      "views": 1708,
+      "language": "zh",
+      "media": {
+        "all": [
+          {
+            "type": "photo",
+            "id": "2090456111984095232",
+            "url": "https://pbs.twimg.com/media/HQLKwhVbMAAh3FJ.jpg?name=orig",
+            "width": 945,
+            "height": 2048
+          }
+        ],
+        "photos": [
+          {
+            "type": "photo",
+            "id": "2090456111984095232",
+            "url": "https://pbs.twimg.com/media/HQLKwhVbMAAh3FJ.jpg?name=orig",
+            "width": 945,
+            "height": 2048
+          }
+        ]
+      },
+      "content_hash": "1b86ec319455473c3d4b770bbcd4eccc8fd1b71d59d807638978a0179278c4e7",
+      "captured_at": "2026-08-21 05:27:20 +08:00",
+      "meta": {
+        "handle": "adrianpunk115",
+        "status_id": "2090456122822115457",
+        "url": "https://x.com/i/status/2090456122822115457",
+        "time_utc": "2026-08-20T15:09:13.000Z",
+        "taipei_date": "2026-08-20",
+        "text_preview": "好像对这四个词有了更深的理解",
+        "likes": 8,
+        "reposts": 0,
+        "replies": 0
+      }
+    },
+    {
+      "source": "fxtwitter",
+      "status_id": "2090429896145408264",
+      "handle": "adrianpunk115",
+      "url": "https://api.fxtwitter.com/adrianpunk115/status/2090429896145408264",
+      "text": "不愧是大神，写出了一个关键问题：AI把执行速度提上去以后，老板自己的判断速度、授权能力和验收标准，反而会成为新的产能上限。\n\n以后管理者要练的有三件事：哪些判断可以下沉、哪些边界提前写清、哪些项目该及时砍掉。",
+      "text_length": 104,
+      "author_display": "Adrian Punk",
+      "author_screen_name": "AdrianPunk115",
+      "time_utc": "Thu Aug 20 13:25:00 +0000 2026",
+      "likes": 1,
+      "reposts": 0,
+      "replies": 0,
+      "views": 1812,
+      "language": "zh",
+      "media": {},
+      "content_hash": "79a60ecc4c7197e09378f124ccc0b7ba8b14ec953c5a26b72d5df3b81d6d59d6",
+      "captured_at": "2026-08-21 05:27:23 +08:00",
+      "meta": {
+        "handle": "adrianpunk115",
+        "status_id": "2090429896145408264",
+        "url": "https://x.com/i/status/2090429896145408264",
+        "time_utc": "2026-08-20T13:25:00.000Z",
+        "taipei_date": "2026-08-20",
+        "text_preview": "不愧是大神，写出了一个关键问题：AI把执行速度提上去以后，老板自己的判断速度、授权能力和验收标准，反而会成为新的产能上限。\n\n以后管理者要练的有三件事：哪些判断可以下沉、哪些边界提前写清、哪些项目该及时砍掉。",
+        "likes": 1,
+        "reposts": 0,
+        "replies": 0
+      }
+    },
+    {
+      "source": "fxtwitter",
+      "status_id": "2090413779414810980",
+      "handle": "adrianpunk115",
+      "url": "https://api.fxtwitter.com/adrianpunk115/status/2090413779414810980",
+      "text": "内娱广告界有太多营销天才…\n\n成都0 陈都灵 真给我笑cry了",
+      "text_length": 31,
+      "author_display": "Adrian Punk",
+      "author_screen_name": "AdrianPunk115",
+      "time_utc": "Thu Aug 20 12:20:57 +0000 2026",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0,
+      "views": 1340,
+      "language": "zh",
+      "media": {
+        "all": [
+          {
+            "type": "photo",
+            "id": "2090413771844100097",
+            "url": "https://pbs.twimg.com/media/HQKkQABaIAEzLoL.jpg?name=orig",
+            "width": 1200,
+            "height": 1600
+          },
+          {
+            "type": "photo",
+            "id": "2090413772158771200",
+            "url": "https://pbs.twimg.com/media/HQKkQBMboAAGOo9.jpg?name=orig",
+            "width": 1080,
+            "height": 1034
+          },
+          {
+            "type": "photo",
+            "id": "2090413771852541952",
+            "url": "https://pbs.twimg.com/media/HQKkQADa8AAmG8O.jpg?name=orig",
+            "width": 1080,
+            "height": 808
+          },
+          {
+            "type": "photo",
+            "id": "2090413771844136960",
+            "url": "https://pbs.twimg.com/media/HQKkQABasAAHiGF.jpg?name=orig",
+            "width": 1080,
+            "height": 475
+          }
+        ],
+        "photos": [
+          {
+            "type": "photo",
+            "id": "2090413771844100097",
+            "url": "https://pbs.twimg.com/media/HQKkQABaIAEzLoL.jpg?name=orig",
+            "width": 1200,
+            "height": 1600
+          },
+          {
+            "type": "photo",
+            "id": "2090413772158771200",
+            "url": "https://pbs.twimg.com/media/HQKkQBMboAAGOo9.jpg?name=orig",
+            "width": 1080,
+            "height": 1034
+          },
+          {
+            "type": "photo",
+            "id": "2090413771852541952",
+            "url": "https://pbs.twimg.com/media/HQKkQADa8AAmG8O.jpg?name=orig",
+            "width": 1080,
+            "height": 808
+          },
+          {
+            "type": "photo",
+            "id": "2090413771844136960",
+            "url": "https://pbs.twimg.com/media/HQKkQABasAAHiGF.jpg?name=orig",
+            "width": 1080,
+            "height": 475
+          }
+        ],
+        "mosaic": {
+          "type": "mosaic_photo",
+          "formats": {
+            "jpeg": "https://mosaic.fxtwitter.com/jpeg/2090413779414810980/HQKkQABaIAEzLoL/HQKkQBMboAAGOo9/HQKkQADa8AAmG8O/HQKkQABasAAHiGF",
+            "webp": "https://mosaic.fxtwitter.com/webp/2090413779414810980/HQKkQABaIAEzLoL/HQKkQBMboAAGOo9/HQKkQADa8AAmG8O/HQKkQABasAAHiGF"
+          }
+        }
+      },
+      "content_hash": "bb4defcd91637f7c70f37994e1ff6599bacd7abaac9d8f89e99d096448fb196c",
+      "captured_at": "2026-08-21 05:27:24 +08:00",
+      "meta": {
+        "handle": "adrianpunk115",
+        "status_id": "2090413779414810980",
+        "url": "https://x.com/i/status/2090413779414810980",
+        "time_utc": "2026-08-20T12:20:57.000Z",
+        "taipei_date": "2026-08-20",
+        "text_preview": "内娱广告界有太多营销天才…\n\n成都0 陈都灵 真给我笑cry了",
+        "likes": 0,
+        "reposts": 0,
+        "replies": 0
+      }
+    },
+    {
+      "source": "fxtwitter",
+      "status_id": "2090403617195114537",
+      "handle": "adrianpunk115",
+      "url": "https://api.fxtwitter.com/adrianpunk115/status/2090403617195114537",
+      "text": "这世界还是癫了\n\nAI演员都有线下路透视频了？！\n\n这真分不出真假了要",
+      "text_length": 35,
+      "author_display": "Adrian Punk",
+      "author_screen_name": "AdrianPunk115",
+      "time_utc": "Thu Aug 20 11:40:34 +0000 2026",
+      "likes": 0,
+      "reposts": 0,
+      "replies": 12,
+      "views": 1562,
+      "language": "zh",
+      "media": {
+        "all": [
+          {
+            "id": "2090403510701686784",
+            "url": "https://video.twimg.com/amplify_video/2090403510701686784/vid/avc1/1260x2232/0QrOrBuAqV4jMtKN.mp4?tag=29",
+            "thumbnail_url": "https://pbs.twimg.com/amplify_video_thumb/2090403510701686784/img/Xwnt1LQoQt-8TXJX.jpg",
+            "duration": 14.805,
+            "width": 1260,
+            "height": 2232,
+            "format": "video/mp4",
+            "type": "video",
+            "formats": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090403510701686784/pl/elPJhtkGoW4_8T-U.m3u8?tag=29&v=cfc",
+                "container": "m3u8"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090403510701686784/vid/avc1/320x566/ERJJ8qRXhFcTHD2d.mp4?tag=29",
+                "bitrate": 632000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090403510701686784/vid/avc1/480x850/8Rwtfbefu2EMW3f6.mp4?tag=29",
+                "bitrate": 950000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090403510701686784/vid/avc1/720x1274/h5j0JkKljcXYCRkq.mp4?tag=29",
+                "bitrate": 2176000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090403510701686784/vid/avc1/1260x2232/0QrOrBuAqV4jMtKN.mp4?tag=29",
+                "bitrate": 10368000,
+                "container": "mp4",
+                "codec": "h264"
+              }
+            ],
+            "publisher": null,
+            "variants": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090403510701686784/pl/elPJhtkGoW4_8T-U.m3u8?tag=29&v=cfc",
+                "bitrate": 0,
+                "content_type": "application/x-mpegURL"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090403510701686784/vid/avc1/320x566/ERJJ8qRXhFcTHD2d.mp4?tag=29",
+                "bitrate": 632000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090403510701686784/vid/avc1/480x850/8Rwtfbefu2EMW3f6.mp4?tag=29",
+                "bitrate": 950000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090403510701686784/vid/avc1/720x1274/h5j0JkKljcXYCRkq.mp4?tag=29",
+                "bitrate": 2176000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090403510701686784/vid/avc1/1260x2232/0QrOrBuAqV4jMtKN.mp4?tag=29",
+                "bitrate": 10368000,
+                "content_type": "video/mp4"
+              }
+            ]
+          }
+        ],
+        "videos": [
+          {
+            "id": "2090403510701686784",
+            "url": "https://video.twimg.com/amplify_video/2090403510701686784/vid/avc1/1260x2232/0QrOrBuAqV4jMtKN.mp4?tag=29",
+            "thumbnail_url": "https://pbs.twimg.com/amplify_video_thumb/2090403510701686784/img/Xwnt1LQoQt-8TXJX.jpg",
+            "duration": 14.805,
+            "width": 1260,
+            "height": 2232,
+            "format": "video/mp4",
+            "type": "video",
+            "formats": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090403510701686784/pl/elPJhtkGoW4_8T-U.m3u8?tag=29&v=cfc",
+                "container": "m3u8"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090403510701686784/vid/avc1/320x566/ERJJ8qRXhFcTHD2d.mp4?tag=29",
+                "bitrate": 632000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090403510701686784/vid/avc1/480x850/8Rwtfbefu2EMW3f6.mp4?tag=29",
+                "bitrate": 950000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090403510701686784/vid/avc1/720x1274/h5j0JkKljcXYCRkq.mp4?tag=29",
+                "bitrate": 2176000,
+                "container": "mp4",
+                "codec": "h264"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090403510701686784/vid/avc1/1260x2232/0QrOrBuAqV4jMtKN.mp4?tag=29",
+                "bitrate": 10368000,
+                "container": "mp4",
+                "codec": "h264"
+              }
+            ],
+            "publisher": null,
+            "variants": [
+              {
+                "url": "https://video.twimg.com/amplify_video/2090403510701686784/pl/elPJhtkGoW4_8T-U.m3u8?tag=29&v=cfc",
+                "bitrate": 0,
+                "content_type": "application/x-mpegURL"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090403510701686784/vid/avc1/320x566/ERJJ8qRXhFcTHD2d.mp4?tag=29",
+                "bitrate": 632000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090403510701686784/vid/avc1/480x850/8Rwtfbefu2EMW3f6.mp4?tag=29",
+                "bitrate": 950000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090403510701686784/vid/avc1/720x1274/h5j0JkKljcXYCRkq.mp4?tag=29",
+                "bitrate": 2176000,
+                "content_type": "video/mp4"
+              },
+              {
+                "url": "https://video.twimg.com/amplify_video/2090403510701686784/vid/avc1/1260x2232/0QrOrBuAqV4jMtKN.mp4?tag=29",
+                "bitrate": 10368000,
+                "content_type": "video/mp4"
+              }
+            ]
+          }
+        ]
+      },
+      "content_hash": "0a2c48753ea76f479892ab05e840ed2d62b81ca0015e350955ca839e92757801",
+      "captured_at": "2026-08-21 05:27:26 +08:00",
+      "meta": {
+        "handle": "adrianpunk115",
+        "status_id": "2090403617195114537",
+        "url": "https://x.com/i/status/2090403617195114537",
+        "time_utc": "2026-08-20T11:40:34.000Z",
+        "taipei_date": "2026-08-20",
+        "text_preview": "这世界还是癫了\n\nAI演员都有线下路透视频了？！\n\n这真分不出真假了要",
+        "likes": 0,
+        "reposts": 0,
+        "replies": 12
+      }
+    }
+  ],
+  "errors": []
+}
