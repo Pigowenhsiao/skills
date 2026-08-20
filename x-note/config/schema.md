@@ -6,7 +6,7 @@ x2-note 從 `.path-config.json` 讀取機器特定設定。
 
 ```json
 {
-  "VAULT_ROOT": "E:\\obsidian\\PigoVault",
+  "VAULT_ROOT": "E:\\obsidian",
   "AGENT_ROOT": "E:\\python_Code\\Agent",
   "DOWNLOADS": "C:\\Users\\pigow\\Downloads",
   "CDP_PORT": 19825,
@@ -50,7 +50,7 @@ x2-note 從 `.path-config.json` 讀取機器特定設定。
 ```json
 {
   "_note": "user config",
-  "VAULT_ROOT": "E:\\obsidian\\PigoVault",
+  "VAULT_ROOT": "E:\\obsidian",
   "AGENT_ROOT": "E:\\python_Code\\Agent",
   "DOWNLOADS": "C:\\Users\\pigow\\Downloads",
   "CDP_PORT": 19825,
