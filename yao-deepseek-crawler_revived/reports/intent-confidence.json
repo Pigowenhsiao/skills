@@ -1,0 +1,35 @@
+{
+  "score": 95,
+  "band": "high",
+  "gate_passed": true,
+  "strengths": [
+    "The recurring job is concrete enough to anchor the package.",
+    "Real input shape is explicit.",
+    "The hand-back output is concrete.",
+    "Boundary exclusions are already explicit.",
+    "Operational constraints are visible."
+  ],
+  "gaps": [],
+  "follow_up_questions": [],
+  "anchor_sentence": "Run multiple DeepSeek web AI-search queries repeatedly, normalize the crawl records, and turn them into GEO probability evidence. Primary output: A canonical JSON dataset, a metrics summary JSON, and a Kami-styled HTML report with brand ranking probabilities, source/channel/title analysis, charts, and conclusions.. Exclusions: Do not handle generic website crawling, DeepSeek API-only calls, unrelated SEO reports, or one-off question answering..",
+  "recommended_action": "Intent is clear enough to package the first routeable version.",
+  "context": {
+    "job": "Run multiple DeepSeek web AI-search queries repeatedly, normalize the crawl records, and turn them into GEO probability evidence.",
+    "real_inputs": [
+      "A list of questions, per-question repeat count, OpenCLI Browser Bridge profile, optional target brand list, optional crawler script path."
+    ],
+    "primary_output": "A canonical JSON dataset, a metrics summary JSON, and a Kami-styled HTML report with brand ranking probabilities, source/channel/title analysis, charts, and conclusions.",
+    "description": "Use when a user needs to run repeated DeepSeek web AI-search crawls for multiple questions, aggregate probabilistic brand/source/ranking evidence, and generate a JSON dataset plus a Kami-styled HTML analysis report. Not for generic web scraping, DeepSeek API chat, or one-off answer writing.",
+    "exclusions": [
+      "Do not handle generic website crawling, DeepSeek API-only calls, unrelated SEO reports, or one-off question answering."
+    ],
+    "constraints": [
+      "Local-first; reuse existing opencli-boss-ai DeepSeek browser crawler when available; preserve raw evidence and avoid fabricating brand/source claims."
+    ],
+    "standards": [
+      "Every run must expose query count, repeat count, completed sample count, answer/reference totals, brand Top 1 and Top 3 rates, source/domain/channel distribution, and title features."
+    ],
+    "correction": "",
+    "user_references": []
+  }
+}

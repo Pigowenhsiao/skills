@@ -1,0 +1,4 @@
+interface:
+  display_name: "RW Paper Extractor"
+  short_description: "从论文和补充材料中提取结构化字段、原文位置、缺失项和可支持的判断。"
+  default_prompt: "Use $rw-paper-extractor to 从论文和补充材料中提取结构化字段、原文位置、缺失项和可支持的判断。"

@@ -1,0 +1,92 @@
+{
+  "schema_version": "2.0.0",
+  "name": "yao-deepseek-crawler",
+  "title": "Yao DeepSeek Crawler",
+  "job_to_be_done": "Run multiple DeepSeek web AI-search queries repeatedly, normalize the crawl records, and turn them into GEO probability evidence.",
+  "trigger_surface": {
+    "description": "Use when a user needs to run repeated DeepSeek web AI-search crawls for multiple questions, aggregate probabilistic brand/source/ranking evidence, and generate a JSON dataset plus a Kami-styled HTML analysis report. Not for generic web scraping, DeepSeek API chat, or one-off answer writing.",
+    "should_trigger": [
+      "Use when a user needs to run repeated DeepSeek web AI-search crawls for multiple questions, aggregate probabilistic brand/source/ranking evidence, and generate a JSON dataset plus a Kami-styled HTML analysis report. Not for generic web scraping, DeepSeek API chat, or one-off answer writing."
+    ],
+    "should_not_trigger": [
+      "Do not handle generic website crawling, DeepSeek API-only calls, unrelated SEO reports, or one-off question answering."
+    ],
+    "edge_cases": []
+  },
+  "workflow": {
+    "steps": [
+      "Understand the request.",
+      "Execute the main task.",
+      "Validate the result."
+    ],
+    "decision_points": [
+      "Ask one focused clarification when the real job, output, or exclusion boundary is unclear.",
+      "Escalate visible tradeoffs when benchmark patterns conflict with local privacy, naming, or governance constraints.",
+      "Do not silently broaden the skill into adjacent jobs just because the examples are nearby."
+    ],
+    "failure_modes": [
+      "Headings and summaries can drift into generic, interchangeable language.",
+      "The output can sound polished but lose the user's actual taste, audience, or scenario.",
+      "Tables can render as dense grids with weak hierarchy or poor mobile readability.",
+      "Long bullets can make the output look complete while hiding the actual decision logic.",
+      "Footnote markers or dense citation notes can interrupt the reading flow.",
+      "Evidence can be over-attached to obvious statements and under-attached to risky claims.",
+      "Users start invoking the skill for adjacent one-off or explanation-only requests.",
+      "Outputs remain valid but become generic, cluttered, or weakly aligned with the user's domain.",
+      "Borrowed benchmark patterns no longer fit the local job or add ceremony without payoff.",
+      "Skill usage becomes team-critical while ownership, review cadence, or rollback evidence stays informal."
+    ]
+  },
+  "resources": {
+    "references": [],
+    "scripts": [],
+    "assets": [],
+    "reports": [
+      "reports/intent-context.json",
+      "reports/intent-confidence.json",
+      "reports/intent-confidence.md",
+      "reports/reference-synthesis.json",
+      "reports/reference-synthesis.md",
+      "reports/output-risk-profile.json",
+      "reports/output-risk-profile.md",
+      "reports/artifact-design-profile.json",
+      "reports/artifact-design-profile.md",
+      "reports/prompt-quality-profile.json",
+      "reports/prompt-quality-profile.md",
+      "reports/system-model.json",
+      "reports/system-model.md"
+    ]
+  },
+  "eval_plan": {
+    "trigger": [],
+    "output": [],
+    "adversarial": [],
+    "baseline": "without_skill"
+  },
+  "risk": {
+    "output_risk": "high",
+    "execution_risk": "low",
+    "trust_boundary": "team"
+  },
+  "governance": {
+    "owner": "Yao Team",
+    "maturity": "production",
+    "review_cadence": "monthly",
+    "review_due": ""
+  },
+  "targets": [
+    "openai",
+    "claude",
+    "generic",
+    "agent-skills-compatible",
+    "vscode"
+  ],
+  "source_files": [
+    "SKILL.md",
+    "manifest.json",
+    "agents/interface.yaml",
+    "reports/intent-context.json",
+    "reports/output-risk-profile.json",
+    "reports/system-model.json"
+  ]
+}

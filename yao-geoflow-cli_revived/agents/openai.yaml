@@ -1,0 +1,10 @@
+# Copyright © 2026 姚金刚. All rights reserved.
+# Project: yao-geoflow-cli
+# Created by: 姚金刚
+# Date: 2026-05-16
+# X: https://x.com/yaojingang
+
+interface:
+  display_name: "Yao GEOFlow Operations"
+  short_description: "Operate an existing GEOFlow 2.0.x instance through CLI, Laravel API v1, or authenticated admin web flows"
+  default_prompt: "Inspect and operate GEOFlow 2.0.x through the local geoflow CLI, Laravel API v1, or authenticated admin web routes. Cover catalog/material resources, tasks, jobs, articles, distribution channels, Analytics, URL Import, System Updates, site settings, theme replication, AI configuration, API tokens, admin users, and Docker/API/admin preflight checks."

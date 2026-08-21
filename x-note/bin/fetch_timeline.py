@@ -20,63 +20,18 @@ Usage:
 """
 import argparse
 import json
+import logging
 import sys
 import time
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
+from cdp_client import CDPClient
 from config_loader import load_config, paths
 
+logger = logging.getLogger(__name__)
 UTC8 = timezone(timedelta(hours=8))
-
-
-def get_cdp_ws(port: int) -> str:
-    """Get the main tab's WebSocket URL."""
-    import urllib.request
-    with urllib.request.urlopen(f"http://localhost:{port}/json", timeout=5) as r:
-        pages = json.loads(r.read())
-    for p in pages:
-        if p.get("type") == "page" and "webSocketDebuggerUrl" in p:
-            return p["webSocketDebuggerUrl"]
-    raise RuntimeError(f"No usable page tab on port {port}")
-
-
-def cdp_send(ws, method: str, params: dict | None = None, msg_id: int = 1, timeout: float = 30.0):
-    """Send a CDP command and wait for response."""
-    import websocket
-    ws.send(json.dumps({"id": msg_id, "method": method, "params": params or {}}))
-    deadline = time.time() + timeout
-    while time.time() < deadline:
-        try:
-            ws.settimeout(timeout)
-            result = json.loads(ws.recv())
-        except Exception:
-            return None
-        if result.get("id") == msg_id:
-            return result
-    return None
-
-
-def cdp_eval(ws, expression: str, msg_id: int) -> str:
-    """Evaluate a JavaScript expression via Runtime.evaluate."""
-    my_id = msg_id
-    res = cdp_send(ws, "Runtime.evaluate", {
-        "expression": expression,
-        "returnByValue": True,
-        "awaitPromise": True,
-    }, msg_id=my_id)
-    if not res:
-        return ""
-    result = res.get("result", {}).get("result", {}) or {}
-    val = result.get("value")
-    if val is None:
-        return ""
-    # If it's already a JSON object/array, return as JSON string.
-    # If it's a string, return the string as-is.
-    if isinstance(val, (dict, list)):
-        return json.dumps(val, ensure_ascii=False)
-    return str(val)
 
 
 def parse_taipei_date(time_utc: str) -> str | None:
@@ -165,11 +120,10 @@ def scroll_page_js() -> str:
            "return document.body.scrollHeight;"
 
 
-def fetch_handle(ws, handle: str, msg_id: int, start_date: str, end_date: str, max_scrolls: int = 12) -> tuple:
+def fetch_handle(client: CDPClient, handle: str, start_date: str, end_date: str, max_scrolls: int = 12) -> tuple:
     """Fetch tweets for one handle. Returns (tweets_list, error_message)."""
     url = f"https://x.com/{handle}"
-    cdp_send(ws, "Page.navigate", {"url": url}, msg_id=msg_id)
-    msg_id += 1
+    client.send("Page.navigate", {"url": url})
     time.sleep(8)  # initial render: modern X.com needs more time for SPAs
 
     all_tweets = {}
@@ -177,9 +131,9 @@ def fetch_handle(ws, handle: str, msg_id: int, start_date: str, end_date: str, m
     no_change = 0
 
     for scroll_n in range(max_scrolls):
-        msg_id += 1
+        # Extract tweets
         js = extract_tweets_js()
-        res_json = cdp_eval(ws, js, msg_id)
+        res_json = client.eval(js)
         if not res_json:
             no_change += 1
         else:
@@ -190,7 +144,7 @@ def fetch_handle(ws, handle: str, msg_id: int, start_date: str, end_date: str, m
                     if sid and sid not in all_tweets:
                         all_tweets[sid] = t
             except Exception as e:
-                print(f"  WARN parse error: {e}")
+                logger.warning(f"WARN parse error: {e}")
 
         # Stop early if all tweets are before start_date
         if all_tweets:
@@ -209,9 +163,19 @@ def fetch_handle(ws, handle: str, msg_id: int, start_date: str, end_date: str, m
             no_change = 0
         last_card_count = len(all_tweets)
 
-        # Scroll
-        msg_id += 1
-        cdp_eval(ws, scroll_page_js(), msg_id)
+        # Scroll with retry: 2 attempts with 2s delay
+        scroll_success = False
+        for scroll_attempt in range(2):
+            scroll_result = client.eval(scroll_page_js())
+            if scroll_result:
+                scroll_success = True
+                break
+            if scroll_attempt < 1:  # Don't delay after last attempt
+                time.sleep(2)
+
+        if not scroll_success:
+            logger.warning(f"Scroll failed after 2 attempts for @{handle}")
+
         time.sleep(2)
 
     # Filter by date range - keep only tweets with valid date in range
@@ -246,29 +210,54 @@ def main():
         handles = h["selected"]
     print(f"[INFO] {len(handles)} handles to fetch")
 
-    import websocket
-    ws_url = get_cdp_ws(port)
-    ws = websocket.create_connection(ws_url, timeout=60)
-    print(f"[INFO] CDP connected: {ws_url[:60]}...")
+    # Create CDPClient and connect
+    client = CDPClient(port=port)
+    if not client.connect():
+        logger.error(f"Failed to connect to CDP on port {port}")
+        sys.exit(1)
+    print(f"[INFO] CDP connected: {client.ws_url[:60]}...")
 
     results = {"start": args.start, "end": args.end, "handles": {}, "errors": []}
-    msg_id = 100
     for i, handle in enumerate(handles, 1):
         print(f"[{i}/{len(handles)}] @{handle} ... ", end="", flush=True)
         try:
-            tweets, err = fetch_handle(ws, handle, msg_id, args.start, args.end, args.max_scrolls)
-            msg_id += 100
+            # Health check before each handle
+            health = client.health_check()
+            if not health["cdp_ok"]:
+                logger.warning(f"CDP unhealthy before @{handle}, attempting reconnect...")
+                if not client._reconnect():
+                    raise ConnectionError(f"CDP reconnect failed for @{handle}")
+
+            tweets, err = fetch_handle(client, handle, args.start, args.end, args.max_scrolls)
             if err:
                 results["errors"].append({"handle": handle, "error": err})
                 print("ERROR")
             else:
                 results["handles"][handle] = tweets
                 print(f"{len(tweets)} tweets")
+        except (ConnectionError, ConnectionResetError) as e:
+            logger.warning(f"Connection error for @{handle}: {e}, attempting reconnect...")
+            if client._reconnect():
+                logger.info(f"Reconnected successfully, retrying @{handle}...")
+                try:
+                    tweets, err = fetch_handle(client, handle, args.start, args.end, args.max_scrolls)
+                    if err:
+                        results["errors"].append({"handle": handle, "error": err})
+                        print("ERROR")
+                    else:
+                        results["handles"][handle] = tweets
+                        print(f"{len(tweets)} tweets (after reconnect)")
+                except Exception as retry_err:
+                    results["errors"].append({"handle": handle, "error": str(retry_err)})
+                    print(f"FAIL: {retry_err}")
+            else:
+                results["errors"].append({"handle": handle, "error": str(e)})
+                print(f"FAIL: {e}")
         except Exception as e:
             results["errors"].append({"handle": handle, "error": str(e)})
             print(f"FAIL: {e}")
 
-    ws.close()
+    client.close()
 
     p = paths(cfg)
     out_dir = p["inbox"]

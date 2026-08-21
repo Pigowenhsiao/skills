@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pigo PPT Style"
+  short_description: "Pigo brand PPT template with consistent colors, fonts, and layouts"
+  default_prompt: "Create a PPT presentation using Pigo brand style"

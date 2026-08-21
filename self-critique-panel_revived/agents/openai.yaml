@@ -1,0 +1,4 @@
+interface:
+  display_name: "Self Critique Panel"
+  short_description: "Run multi-persona critique and synthesis"
+  default_prompt: "Use $self-critique-panel to stress-test and improve this draft."

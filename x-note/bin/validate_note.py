@@ -84,52 +84,6 @@ def parse_frontmatter(text: str) -> tuple:
     return fm, body
 
 
-def _validate_legacy_v6(path: Path, body: str, threshold: float) -> dict:
-    """Validate a legacy x-note v6 format note (核心摘要 / 關鍵知識點 / ...)."""
-    issues = []
-
-    def extract_section(text: str, start: str, ends: tuple) -> str:
-        if start not in text:
-            return ""
-        after = text.split(start, 1)[1]
-        for end in ends:
-            if end in after:
-                after = after.split(end, 1)[0]
-        return after.strip()
-
-    legacy_specs = [
-        ("## 核心摘要", "## 文章分析"),
-        ("### 核心論點", "### 風險與限制"),
-        ("### 風險與限制", "## 關鍵知識點"),
-        ("## 關鍵知識點", "## 我會怎麼用這篇內容"),
-        ("## 我會怎麼用這篇內容", "## 全文（繁中重寫）"),
-        ("## 全文（繁中重寫）", "## 原文區塊"),
-    ]
-    for start, end in legacy_specs:
-        chunk = extract_section(body, start, (end,))
-        if len(chunk.strip()) < 40:
-            issues.append(f"legacy section too short or empty: {start} ({len(chunk.strip())} chars)")
-
-    if not re.search(r"(?ms)^(?P<fence>`{3,})text\n(?P<raw>.*?)\n(?P=fence)(?:\n|$)", body):
-        issues.append("legacy note: complete post text is not enclosed in a fenced code block")
-
-    for pat in PLACEHOLDER_PATTERNS:
-        if pat in body:
-            issues.append(f"legacy note: placeholder text detected: '{pat}'")
-            break
-
-    return {
-        "path": str(path),
-        "filename": path.name,
-        "issues": issues,
-        "valid": len(issues) == 0,
-        "score": "legacy",
-        "handle": None,
-        "tweet_id": None,
-        "validation_method": "legacy-rule",
-    }
-
-
 def validate_note_rule_based(note_path: Path, threshold: float) -> dict:
     """
     Rule-based validation (fast, no LLM call).
@@ -139,17 +93,6 @@ def validate_note_rule_based(note_path: Path, threshold: float) -> dict:
     passed = []
     text = note_path.read_text(encoding="utf-8")
     fm, body = parse_frontmatter(text)
-
-    # Legacy v6 detection
-    legacy_v6_headings = (
-        "## 核心摘要", "## 關鍵知識點",
-        "## 我會怎麼用這篇內容", "## 全文（繁中重寫）",
-        "## 原文區塊",
-    )
-    is_legacy_v6 = all(h in body for h in legacy_v6_headings[:3])
-
-    if is_legacy_v6:
-        return _validate_legacy_v6(note_path, body, threshold)
 
     # Frontmatter fields
     missing = REQUIRED_FM_FIELDS - set(fm.keys())

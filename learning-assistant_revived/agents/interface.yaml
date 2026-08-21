@@ -1,0 +1,24 @@
+interface:
+  display_name: "Learning Assistant"
+  short_description: "世界級學習教練：學習路徑 + 知識拆解 + 間隔重複"
+  default_prompt: "使用 learning-assistant 幫我規劃學習路徑、拆解知識原子、建立間隔重複系統"
+compatibility:
+  canonical_format: "agent-skills"
+  adapter_targets:
+    - "openai"
+    - "claude"
+    - "generic"
+  activation:
+    mode: "manual"
+    paths: []
+  execution:
+    context: "inline"
+    shell: "bash"
+  trust:
+    source_tier: "local"
+    remote_inline_execution: "forbid"
+    remote_metadata_policy: "allow-metadata-only"
+  degradation:
+    openai: "metadata-adapter"
+    claude: "neutral-source-plus-adapter"
+    generic: "neutral-source"

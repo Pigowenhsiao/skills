@@ -71,12 +71,9 @@ def fxtwitter_get(handle: str, status_id: str, host: str, timeout: float = 30.0)
     }
 
 
-def cdp_extract_single(ws, url: str, msg_id: int) -> dict | None:
-    """Fallback: open single status page and extract DOM."""
+def cdp_extract_single(ws, url: str, msg_id: int, max_retries: int = 2) -> dict | None:
+    """Fallback: open single status page and extract DOM with retry."""
     import websocket
-    nav_id = msg_id
-    cdp_send_basic(ws, "Page.navigate", {"url": url}, msg_id=nav_id)
-    time.sleep(8)
     js = """
 (function() {
     const article = document.querySelector('article');
@@ -86,35 +83,62 @@ def cdp_extract_single(ws, url: str, msg_id: int) -> dict | None:
     return {text: text, time_utc: time};
 })()
 """
-    eval_id = msg_id + 1
-    res = cdp_send_basic(ws, "Runtime.evaluate", {
-        "expression": js, "returnByValue": True, "awaitPromise": True
-    }, msg_id=eval_id)
-    if not res:
-        return None
-    val = res.get("result", {}).get("result", {}).get("value", "")
-    if not val:
-        return None
-    if isinstance(val, str):
-        try:
-            d = json.loads(val)
-        except Exception:
+    last_error = None
+    for attempt in range(1, max_retries + 1):
+        nav_id = msg_id
+        cdp_send_basic(ws, "Page.navigate", {"url": url}, msg_id=nav_id)
+        time.sleep(8)
+        eval_id = msg_id + 1
+        res = cdp_send_basic(ws, "Runtime.evaluate", {
+            "expression": js, "returnByValue": True, "awaitPromise": True
+        }, msg_id=eval_id)
+        if not res:
+            last_error = f"attempt {attempt}: CDP eval returned None"
+            if attempt < max_retries:
+                time.sleep(3)
+                continue
             return None
-    elif isinstance(val, dict):
-        d = val
-    else:
-        return None
-    if not d.get("text"):
-        return None
-    return {
-        "source": "x.com-cdp",
-        "url": url,
-        "text": d["text"],
-        "text_length": len(d["text"]),
-        "time_utc": d.get("time_utc", ""),
-        "content_hash": hashlib.sha256(d["text"].encode("utf-8")).hexdigest(),
-        "captured_at": time.strftime("%Y-%m-%d %H:%M:%S +08:00", time.localtime()),
-    }
+        val = res.get("result", {}).get("result", {}).get("value", "")
+        if not val:
+            last_error = f"attempt {attempt}: empty eval result"
+            if attempt < max_retries:
+                time.sleep(3)
+                continue
+            return None
+        if isinstance(val, str):
+            try:
+                d = json.loads(val)
+            except Exception as e:
+                last_error = f"attempt {attempt}: JSON parse failed: {e}"
+                if attempt < max_retries:
+                    time.sleep(3)
+                    continue
+                return None
+        elif isinstance(val, dict):
+            d = val
+        else:
+            last_error = f"attempt {attempt}: unexpected value type {type(val)}"
+            if attempt < max_retries:
+                time.sleep(3)
+                continue
+            return None
+        if not d.get("text"):
+            last_error = f"attempt {attempt}: no tweet text found"
+            if attempt < max_retries:
+                time.sleep(3)
+                continue
+            return None
+        return {
+            "source": "x.com-cdp",
+            "url": url,
+            "text": d["text"],
+            "text_length": len(d["text"]),
+            "time_utc": d.get("time_utc", ""),
+            "content_hash": hashlib.sha256(d["text"].encode("utf-8")).hexdigest(),
+            "captured_at": time.strftime("%Y-%m-%d %H:%M:%S +08:00", time.localtime()),
+        }
+    # All retries exhausted - return None with last error stored in calling context
+    return None
 
 
 def cdp_send_basic(ws, method: str, params: dict, msg_id: int, timeout: float = 30.0):
@@ -213,9 +237,9 @@ def main():
             full_data["posts"].append(full)
             print(f"fxtwitter OK ({full['text_length']} chars)")
         elif ws is not None:
-            # Fallback to CDP
+            # Fallback to CDP (with retry: max_retries=2, 3s delay)
             try:
-                fb = cdp_extract_single(ws, post["url"], msg_id)
+                fb = cdp_extract_single(ws, post["url"], msg_id, max_retries=2)
                 msg_id += 100
                 if fb:
                     fb["handle"] = handle
@@ -223,7 +247,7 @@ def main():
                     full_data["posts"].append(fb)
                     print(f"CDP fallback OK ({fb['text_length']} chars)")
                 else:
-                    err = f"Both fxtwitter and x.com failed: {full.get('__error__', 'unknown')}"
+                    err = f"Both fxtwitter and x.com failed after 2 retries: {full.get('__error__', 'unknown')}"
                     full_data["errors"].append({"handle": handle, "status_id": sid, "error": err})
                     print(f"FAIL: {err}")
             except Exception as e:

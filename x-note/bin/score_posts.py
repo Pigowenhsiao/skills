@@ -111,7 +111,8 @@ def main():
         if score >= threshold:
             scored.append(record)
         else:
-            skipped.append(record)
+            skip_reason = result.get('reasoning') or f'score {score} < threshold {threshold}'
+            skipped.append({**record, 'skip_reason': skip_reason})
 
     scored.sort(key=lambda r: -r["score"])
 

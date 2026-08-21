@@ -38,7 +38,7 @@ API_URL_DEFAULT = "https://api.minimax.io/anthropic/v1/messages"
 CACHE_DIR = Path.home() / ".cache" / "x-note-curator"
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
 CURATOR_TIMEOUT = 60
-MAX_HTTP_RETRIES = 2
+MAX_HTTP_RETRIES = 3
 
 # Placeholder / fallback text patterns. ANY match means curator did not run.
 # Used by validate_note.py to reject placeholder notes.
@@ -167,11 +167,13 @@ def _api_call(payload: dict, api_key: str, api_url: str = API_URL_DEFAULT) -> st
                 return body
         except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as e:
             last_err = f"attempt {attempt}: {type(e).__name__}: {e}"
-            time.sleep(1)
+            sleep = 2 ** (attempt - 1)
+            print(f"[WARN] API call {attempt} failed: {last_err}, retry in {sleep}s")
+            time.sleep(sleep)
         except Exception as e:
             last_err = f"attempt {attempt}: {type(e).__name__}: {e}"
             break
-    print(f"[ERROR] API call failed: {last_err}")
+    print(f"[ERROR] All {MAX_HTTP_RETRIES} retries failed: {last_err}")
     return ""
 
 
@@ -911,9 +913,13 @@ def curate_sections(
     sections["summary"] = extract(
         "## Core Summary", ("## Key Points", "## Why It Matters")
     )
-    sections["key_points"] = extract(
+    kp_raw = extract(
         "## Key Points", ("## Why It Matters",)
     )
+    # Parse bullet points: each line starting with "-"
+    kp_lines = [l.strip() for l in kp_raw.splitlines() if l.strip().startswith("-")]
+    kp_items = [l.lstrip("-").strip() for l in kp_lines]
+    sections["key_points"] = kp_items  # list, not string
     sections["why_it_matters"] = extract(
         "## Why It Matters", ()
     )

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <!-- Pigo Style Content Page Template -->
+  
+  <!-- Background -->
+  <rect width="1280" height="720" fill="#FFFFFF"/>
+  
+  <!-- Top decorative bar -->
+  <rect x="0" y="0" width="1280" height="6" fill="#3B82F6"/>
+  
+  <!-- Page label -->
+  <text x="60" y="45" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" fill="#3B82F6" letter-spacing="1">
+    [PAGE TYPE]
+  </text>
+  
+  <!-- Page title -->
+  <text x="60" y="95" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700" fill="#111827">
+    [PAGE TITLE]
+  </text>
+  
+  <!-- Content area -->
+  <g id="content-area">
+    <!-- Content goes here -->
+  </g>
+  
+  <!-- Footer line -->
+  <line x1="60" y1="670" x2="1220" y2="670" stroke="#E5E7EB" stroke-width="1"/>
+  
+  <!-- Page number -->
+  <text x="640" y="695" font-family="Inter, Arial, sans-serif" font-size="12" fill="#6B7280" text-anchor="middle">
+    [PAGE]
+  </text>
+</svg>

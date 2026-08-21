@@ -1,0 +1,10 @@
+{
+  "name": "expert-skill",
+  "version": "0.1.0",
+  "description": "GEO 行業專家速成與行業認知快速建構 Skill，幫助 Agent 或使用者在短時間內建立可解釋、可驗證、可轉移的行業認知結構。",
+  "entrypoint": "SKILL.md",
+  "requires_env": [],
+  "optional_env": [],
+  "modes": ["industry-analysis"],
+  "artifacts": []
+}

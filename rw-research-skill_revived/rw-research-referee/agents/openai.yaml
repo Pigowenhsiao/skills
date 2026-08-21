@@ -1,0 +1,4 @@
+interface:
+  display_name: "RW Research Referee"
+  short_description: "在执行或投稿前检查研究结论所需证据、偏倚、替代解释和报告边界。"
+  default_prompt: "Use $rw-research-referee to 在执行或投稿前检查研究结论所需证据、偏倚、替代解释和报告边界。"

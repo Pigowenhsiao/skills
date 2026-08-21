@@ -1,0 +1,4 @@
+interface:
+  display_name: "Visual Ideation"
+  short_description: "Turn visual requests into image-ready specs"
+  default_prompt: "Use $visual-ideation to turn this image request into a strong visual brief and prompt."

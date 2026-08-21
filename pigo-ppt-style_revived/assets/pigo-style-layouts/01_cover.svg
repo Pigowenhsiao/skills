@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <!-- Pigo Style Cover Page Template -->
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#1f2937"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1280" height="720" fill="url(#bgGrad)"/>
+  
+  <!-- Top decorative bar -->
+  <rect x="0" y="0" width="1280" height="8" fill="#3B82F6"/>
+  
+  <!-- Pigo accent element -->
+  <rect x="60" y="80" width="80" height="6" rx="3" fill="#3B82F6"/>
+  
+  <!-- Title area -->
+  <text x="60" y="180" font-family="Inter, Arial, sans-serif" font-size="56" font-weight="700" fill="#FFFFFF">
+    [TITLE]
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="60" y="260" font-family="Inter, Arial, sans-serif" font-size="24" fill="#6B7280">
+    [SUBTITLE]
+  </text>
+  
+  <!-- Bottom info -->
+  <text x="60" y="620" font-family="Inter, Arial, sans-serif" font-size="14" fill="#6B7280">
+    [DATE] | Pigo
+  </text>
+  
+  <!-- Page number -->
+  <text x="640" y="680" font-family="Inter, Arial, sans-serif" font-size="12" fill="#6B7280" text-anchor="middle">
+    1
+  </text>
+</svg>

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Knowledge Framework"
+  short_description: "Apply analysis frameworks to existing content"
+  default_prompt: "Use $knowledge-framework to restructure this draft with the right framework."

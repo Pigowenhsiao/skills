@@ -1,0 +1,18 @@
+蔚来|NIO|蔚来ES8|蔚来ES6|蔚来EC6|蔚来ES7|蔚来ET5|蔚来ET7|蔚来EC7|NIO ES8|NIO ES6|NIO EC6
+理想汽车|理想|理想L9|理想L8|理想L7|理想MEGA
+小鹏汽车|小鹏|小鹏G9|小鹏P7|小鹏X9
+比亚迪|BYD|比亚迪汉|比亚迪唐|比亚迪宋|方程豹|仰望
+特斯拉|Tesla|Model Y|Model 3|Model X|Model S
+问界|AITO|问界M9|问界M7|问界M5
+极氪|Zeekr|极氪001|极氪007|极氪9X|极氪X
+腾势|Denza|腾势D9|腾势N7|腾势N9
+阿维塔|Avatr|阿维塔11|阿维塔12
+智界|智界R7|智界S7
+小米汽车|小米|Xiaomi|小米SU7|小米YU7
+享界|享界S9
+岚图|岚图FREE|岚图梦想家|岚图追光
+零跑汽车|零跑|零跑C10|零跑C11|零跑C16
+深蓝汽车|深蓝|深蓝S07|深蓝S05|深蓝SL03
+宝马|BMW|宝马iX|宝马i3|宝马i5
+奔驰|Mercedes-Benz|梅赛德斯|奔驰EQE|奔驰EQS
+奥迪|Audi|奥迪Q4 e-tron|奥迪Q6 e-tron

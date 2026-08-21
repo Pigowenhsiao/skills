@@ -333,7 +333,10 @@ def write_note(
 
     slug = slugify(text)
     fname = f"{tweet_date}_x-note_{handle}_{slug}.md"
-    out_path = p["inbox"] / fname
+    vault_root = p["vault_root"]
+    target_dir = vault_root / classification
+    target_dir.mkdir(parents=True, exist_ok=True)
+    out_path = target_dir / fname
 
     # ── Frontmatter ──────────────────────────────────────────────────
     fm = {
@@ -353,7 +356,7 @@ def write_note(
         "score_reason": " | ".join(str(r) for r in reasons) if reasons else "n/a",
         "content_hash": content_hash,
         "text_length": text_length,
-        "status": "inbox",
+        "status": "filed",
         "classification_path": classification,
         # NOTE: _content_type/_usefulness/_cls_* stored in status JSON (not frontmatter)
     }
@@ -376,6 +379,16 @@ def write_note(
     # Validate curator produced real content
     if curated.get("summary"):
         summary = curated["summary"]
+    if curated.get("key_points"):
+        kp_str = curated["key_points"]
+        # curator returns newline-separated string or list
+        if isinstance(kp_str, list):
+            key_points = kp_str
+        else:
+            lines = [l.strip() for l in kp_str.splitlines() if l.strip().startswith("-")]
+            if len(lines) >= 3:
+                key_points = [l.lstrip("-").strip() for l in lines]
+            # else: keep heuristic_key_points
     if curated.get("why_it_matters"):
         why_it_matters = curated["why_it_matters"]
     if not curated.get("summary") and not curated.get("key_points"):
@@ -561,7 +574,7 @@ def main():
     passed = len(results) - failed
     print(f"\n[{'OK' if failed == 0 else 'WARN'}] "
           f"Wrote {passed}/{len(kept)} notes | Failed: {failed}")
-    print(f"[INFO] Output dir: {p['inbox']}")
+    print(f"[INFO] Output dir: {p['vault_root']} (via classification_path)")
 
     # Write status file
     out_status = p["inbox"] / f"xnote_status_{args.date}.json"
