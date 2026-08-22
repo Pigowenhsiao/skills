@@ -1,4 +1,0 @@
-interface:
-  display_name: "Fermi Estimate"
-  short_description: "Estimate hard-to-measure quantities step by step"
-  default_prompt: "Use $fermi-estimate to approximate this unknown quantity."

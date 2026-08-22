@@ -156,7 +156,9 @@ python score_posts.py --input xnote_full_YYYY-MM-DD.json
 ### Step 6: 寫入 Vault（llm-wiki 格式）
 
 ```bash
-python bin/write_to_inbox.py --input xnote_score_YYYY-MM-DD.json --threshold 6.5
+python bin/write_to_inbox.py --input xnote_score_YYYY-MM-DD.json
+# 預設寫入 00-Inbox。如需直接寫入分類目錄：
+python bin/write_to_inbox.py --input xnote_score_YYYY-MM-DD.json --to-classified
 ```
 
 輸出檔名：
@@ -210,6 +212,8 @@ Pass/fail 依賴 rule-based validation（穩定），MiniMax-M3 分數僅作參�
 
 ```bash
 python write_to_inbox.py --input xnote_score_YYYY-MM-DD.json --date YYYY-MM-DD
+# 預設寫入 00-Inbox。如需直接寫入分類目錄：
+python write_to_inbox.py --input xnote_score_YYYY-MM-DD.json --date YYYY-MM-DD --to-classified
 # Validation 自動在 write_to_inbox 內完成
 # 輸出寫入 {{VAULT_ROOT}}/00-Inbox/YYYY-MM-DD_x-note_*.md
 # 狀態寫入 {{VAULT_ROOT}}/00-Inbox/xnote_status_YYYY-MM-DD.json
@@ -248,6 +252,25 @@ python bin/update_indexes.py --date YYYY-MM-DD
 - 失敗數
 - 輸出檔案
 - 限制
+
+### Step 8.5: 分類並移出 Inbox（可選，推薦執行）
+
+```bash
+# 預覽：顯示分類結果，不移動檔案
+python bin/inbox_check.py --dry-run
+
+# 執行：MiniMax-M3 分類 → 移動到正確的 vault 目錄
+python bin/inbox_check.py
+
+# 只看哪些 notes 在 inbox
+python bin/inbox_check.py --status-only
+
+# 只處理特定日期
+python bin/inbox_check.py --date 2026-08-01
+```
+
+會呼叫 `curator.classify_with_llm()` 對每篇 inbox note 打分類，
+然後根據 vault 分類表移到對應資料夾，並從 `00-Inbox/index.md` 移除 wikilink。
 
 ### Step 9: Boundary Check
 

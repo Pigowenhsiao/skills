@@ -257,6 +257,7 @@ def write_note(
     capture_method: str,
     timeline_date: str | None = None,
     skip_validation: bool = False,
+    force_inbox: bool = False,
 ) -> tuple[str, str, dict]:
     """
     Write a single x-note and validate it with MiniMax-M3.
@@ -334,7 +335,14 @@ def write_note(
     slug = slugify(text)
     fname = f"{tweet_date}_x-note_{handle}_{slug}.md"
     vault_root = p["vault_root"]
-    target_dir = vault_root / classification
+    if force_inbox:
+        target_dir = p["vault_root"] / "00-Inbox"
+        note_status = "inbox"
+        note_classification = "00-Inbox"
+    else:
+        target_dir = vault_root / classification
+        note_status = "filed"
+        note_classification = classification
     target_dir.mkdir(parents=True, exist_ok=True)
     out_path = target_dir / fname
 
@@ -356,8 +364,8 @@ def write_note(
         "score_reason": " | ".join(str(r) for r in reasons) if reasons else "n/a",
         "content_hash": content_hash,
         "text_length": text_length,
-        "status": "filed",
-        "classification_path": classification,
+        "status": note_status,
+        "classification_path": note_classification,
         # NOTE: _content_type/_usefulness/_cls_* stored in status JSON (not frontmatter)
     }
 
@@ -514,6 +522,10 @@ def main():
     parser.add_argument("--skip-validation", action="store_true",
                         help="Skip MiniMax-M3 inline validation (for debugging)")
     parser.add_argument("--allow-heuristic", action="store_true", help="(deprecated)")
+    parser.add_argument("--to-classified", action="store_true",
+                        help="Write to classified folders instead of default 00-Inbox")
+    parser.add_argument("--min-words", type=int, default=250,
+                        help="Min English words OR Chinese chars to write (default: 250)")
     args = parser.parse_args()
 
     cfg = load_config()
@@ -530,10 +542,23 @@ def main():
 
     capture_method = f"fxtwitter/{cfg['X2_FXTWITTER_HOST']}"
     kept = data.get("kept", [])
+
+    # Word count filter (English words >= N OR Chinese chars >= N)
+    def _word_count(text: str) -> int:
+        chinese = len(re.findall(r'[\u4e00-\u9fff]', text))
+        english = len(re.findall(r'\b[a-zA-Z]+\b', text))
+        return max(chinese, english)
+
+    before = len(kept)
+    kept = [p for p in kept if _word_count(p.get("text", "")) >= args.min_words]
+    after = len(kept)
+    print(f"[FILTER] min-words={args.min_words}: {before} → {after} notes")
+
     if args.limit:
         kept = kept[:args.limit]
 
-    print(f"[INFO] Writing {len(kept)} notes for {args.date}")
+    print(f"[INFO] Writing {len(kept)} notes for {args.date} (min-words={args.min_words})")
+    print(f"[INFO] Output: {'classified folders' if args.to_classified else '00-Inbox'}")
     print(f"[INFO] Classification: MiniMax-M3")
     print(f"[INFO] Validation: {'MiniMax-M3 inline' if not args.skip_validation else 'SKIPPED'}")
 
@@ -549,6 +574,7 @@ def main():
                 capture_method,
                 timeline_date,
                 skip_validation=args.skip_validation,
+                force_inbox=not args.to_classified,
             )
             v_score = v_result.get("score", 0)
             print(f"  [{i+1}/{len(kept)}] [PASS v={v_score:.0f}] {Path(out_path).name}")
@@ -574,7 +600,8 @@ def main():
     passed = len(results) - failed
     print(f"\n[{'OK' if failed == 0 else 'WARN'}] "
           f"Wrote {passed}/{len(kept)} notes | Failed: {failed}")
-    print(f"[INFO] Output dir: {p['vault_root']} (via classification_path)")
+    out_dir_label = f"{p['vault_root']} (via classification_path)" if args.to_classified else "00-Inbox"
+    print(f"[INFO] Output dir: {out_dir_label}")
 
     # Write status file
     out_status = p["inbox"] / f"xnote_status_{args.date}.json"

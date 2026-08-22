@@ -1,4 +1,0 @@
-interface:
-  display_name: "台美股投資分析"
-  short_description: "根據官方財報、投資框架與護城河邏輯分析台股與美股名單"
-  default_prompt: "Use $tw-stock-growth-investing to analyze Taiwan or US stocks from a note, transcript, or investment framework with primary-source validation."

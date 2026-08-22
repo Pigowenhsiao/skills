@@ -1,4 +1,0 @@
-interface:
-  display_name: "Concept Alignment"
-  short_description: "Clarify concepts and gather grounded context"
-  default_prompt: "Use $concept-alignment to clarify this task before execution."

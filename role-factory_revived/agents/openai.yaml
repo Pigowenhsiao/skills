@@ -1,4 +1,0 @@
-interface:
-  display_name: "Role Factory"
-  short_description: "Design task-specific expert personas or teams"
-  default_prompt: "Use $role-factory to design the right personas for this task."
